@@ -1,3 +1,9 @@
-<p [hidden]="ocultarMensaje">
-    Bienvenido {{usuarioLogueado}}
-</p>
+<div class="divLogged" [hidden]="ocultarMensaje">
+    <p >
+        Bienvenido {{usuario.email}}
+    </p>
+    <li>
+        <button class="btn btn-outline-secondary" type="button" (click)="desloguear()" routerLink="/">Logout</button>
+    </li>
+
+</div>

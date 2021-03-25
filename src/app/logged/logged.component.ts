@@ -1,5 +1,6 @@
+import { User } from './../clases/user';
 import { AuthService } from './../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-logged',
@@ -7,28 +8,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logged.component.css']
 })
 export class LoggedComponent implements OnInit {
-  usuarioLogueado: any;
+  
   ocultarLogin: boolean = false;
   ocultarRegistro: boolean = false;
   ocultarMensaje : boolean = true;
+  ocultarBotonLogout : boolean = true;
+
+  @Input() usuario : any;
+
   constructor(private authSvc : AuthService) { }
 
   ngOnInit(): void {
-    if(this.authSvc.isLogged){
+    
       this.authSvc.afAuth.authState.subscribe(res=>{
         if(res && res.uid){
-          this.usuarioLogueado.email = res.email;
-          this.ocultarLogin = true;
-          this.ocultarRegistro = true;
+          this.usuario.email = res.email;
+          console.log(this.usuario);
+          // this.ocultarLogin = true;
+          // this.ocultarRegistro = true;
           this.ocultarMensaje = false;
         }
+        else{
+          // this.ocultarLogin = false;
+          // this.ocultarRegistro = false;
+          this.ocultarMensaje = true;
+        }
       });
-    }
-    else{
-      this.ocultarLogin = false;
-      this.ocultarRegistro = false;
-      this.ocultarMensaje = true;
-    }
+   
+  }
+  async desloguear(){
+    this.authSvc.afAuth.authState.subscribe(res=>{
+      if(res && res.uid){
+        this.authSvc.afAuth.signOut();
+        this.ocultarBotonLogout = false;
+        console.log(res.email);
+      }
+      else{
+        this.ocultarBotonLogout = true;
+      }
+    })
   }
 
 }

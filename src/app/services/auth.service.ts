@@ -19,7 +19,7 @@ export class AuthService {
 
   async SignIn(user: User) {
     
-    console.log(user);
+    // console.log(user);
     try {
       return await this.afAuth.signInWithEmailAndPassword(user.email, user.password);
     } 

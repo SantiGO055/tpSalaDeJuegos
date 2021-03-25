@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   // }
   async login(){
   
-  console.log(this.email);
+  // console.log(this.email);
     
   this.user.email = this.email;
   this.user.password = this.password;
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     const user = await this.authSvc.SignIn(this.user);
     // console.log(user);
     if (user.message == null ) {
-      console.log("se logueo");
+      // console.log("se logueo");
       this.router.navigateByUrl('/');
     }
     else{

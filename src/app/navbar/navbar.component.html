@@ -17,9 +17,14 @@
             <li class="nav-item">
               <app-weather></app-weather>
             </li>
-            <li>
-              <app-logged></app-logged>
+            <li class="nav-item">
+              
+              <app-logged  name="usuario" [usuario]="usuario"></app-logged>
+              
             </li>
+            <!-- <li [hidden]="ocultarBotonLogout">
+              <button class="btn btn-outline-secondary" type="button" (click)="desloguear()" routerLink="/">Logout</button>
+            </li> -->
           </ul>
         </div>
       </nav>
