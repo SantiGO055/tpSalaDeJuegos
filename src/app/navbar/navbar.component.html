@@ -5,14 +5,14 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" routerLink="/"><img src="assets/joystickIcon.png"></a>
+          <a class="navbar-brand" [routerLink]="'/'"><img src="assets/joystickIcon.png"></a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             
             <li class="nav-item" [hidden]="ocultarLogin">
-              <a routerLink='/login' routerLinkActive="active" class="nav-link borderFade">Login</a>
+              <a [routerLink]="'/login'" routerLinkActive="active" class="nav-link borderFade">Login</a>
             </li>
             <li class="nav-item" [hidden]="ocultarRegistro">
-              <a routerLink='/register' routerLinkActive="active" class="nav-link borderFade" href="#">Registrarse</a>
+              <a [routerLink]="'/register'" routerLinkActive="active" class="nav-link borderFade" href="#">Registrarse</a>
             </li>
             <li class="nav-item">
               <app-weather></app-weather>

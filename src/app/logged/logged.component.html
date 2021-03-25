@@ -3,7 +3,7 @@
         Bienvenido {{usuario.email}}
     </p>
     <li>
-        <button class="btn btn-outline-secondary" type="button" (click)="desloguear()" routerLink="/">Logout</button>
+        <button class="btn btn-outline-secondary" type="button" (click)="desloguear()" [routerLink]="'/'">Logout</button>
     </li>
 
 </div>
