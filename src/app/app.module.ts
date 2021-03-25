@@ -28,7 +28,8 @@ import { LoggedComponent } from './logged/logged.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    LoggedComponent
+    LoggedComponent,
+    
   ],
   imports: [
     BrowserModule,
