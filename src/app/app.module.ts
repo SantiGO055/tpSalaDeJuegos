@@ -36,7 +36,7 @@ import { LoggedComponent } from './logged/logged.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     ReactiveFormsModule,
     CommonModule
