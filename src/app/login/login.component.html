@@ -1,0 +1,27 @@
+<!-- <div class="form-group">
+    <label for="login">Iniciar Sesion</label>
+    
+    <input type="email" class="form-control" id="email" required placeholder="Email" [(ngModel)]="email">
+    <input type="password" class="form-control" id="password" required placeholder="Contraseña" [(ngModel)]="password" >
+    
+    <button class="btn btn-info my-2" type="submit" (click)="login()">Login</button>
+    
+  </div> -->
+
+<div class="login-page">
+    <div class="form">
+        <form [hidden]="flag" class="register-form">
+            <input type="text" placeholder="email address" name="email" [(ngModel)]="email"/>
+            <input type="password" placeholder="password" name="password" [(ngModel)]="password"/>
+            <button>create</button>
+            <p class="message">Already registered? <a href="#" >Sign In</a></p>
+        </form>
+        <form class="form-group">
+            <input type="text" id="email" class="form-control" placeholder="Email" [(ngModel)]="email"  name="email">
+            <input type="password" id="password" class="form-control" placeholder="Contraseña" [(ngModel)]="password" name="password" >
+            
+            <button type="submit" (click)="login()">login</button>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
+        </form>
+    </div>
+</div>

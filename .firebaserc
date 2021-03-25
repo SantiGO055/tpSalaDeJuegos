@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pruebaapp-d0854": {
+      "hosting": {
+        "tpSalaDeJuegos": [
+          "pruebaapp-d0854"
+        ]
+      }
+    }
+  }
+}
