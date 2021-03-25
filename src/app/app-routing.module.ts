@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
@@ -5,8 +6,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   
-  { path: 'LoginComponent', component: LoginComponent},
-  { path: 'RegisterComponent', component: RegisterComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
+  //puedo hacer { path: '**', component: HomeComponent}
+  //para especificar que si no encuentro ninguna ruta redirijo a un componente de error 404
+  //router link rutea desde html y la navegacion rutea desde typescript
 ];
 
 @NgModule({
