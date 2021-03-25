@@ -1,0 +1,9 @@
+.clima{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+}
+input,button{
+    margin-right: 15px;
+}
