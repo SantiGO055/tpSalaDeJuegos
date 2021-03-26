@@ -21,7 +21,7 @@ import { LoggedComponent } from './logged/logged.component';
 import { QuiensoyComponent } from './quiensoy/quiensoy.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import * as jQuery from 'jquery';
-
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +44,7 @@ import * as jQuery from 'jquery';
     ReactiveFormsModule,
     CommonModule,
     AngularFireDatabaseModule,
-    
+    NgbCollapseModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
