@@ -18,7 +18,9 @@ import { AngularFireModule } from '@angular/fire';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { LoggedComponent } from './logged/logged.component';
-
+import { QuiensoyComponent } from './quiensoy/quiensoy.component';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import * as jQuery from 'jquery';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { LoggedComponent } from './logged/logged.component';
     RegisterComponent,
     HomeComponent,
     LoggedComponent,
+    QuiensoyComponent,
     
   ],
   imports: [
@@ -39,7 +42,9 @@ import { LoggedComponent } from './logged/logged.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    AngularFireDatabaseModule,
+    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

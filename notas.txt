@@ -1,0 +1,17 @@
+(click)="registro()"
+
+en ts:
+en el constructor agrego el modulo de ruteo
+
+
+constructor(private router: RouterModule){}
+
+Registro(){
+	this.router.navigate('['login']')
+}
+
+
+
+Los componentes se cargan y se destruyen a medida que se va usando.
+No puedo guardar informacion por que se destruye
+el servicio se genera al momento de generar la app y queda vivo hasta un f5 o hasta cerrar el navegador, desde otros componentes puedo pasar info de un componente a otro

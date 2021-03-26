@@ -1,0 +1,16 @@
+div.imagen {
+width: 40%;
+margin: 0 auto 0 auto;
+padding: 5px;
+background-color: #000000;
+}
+div.imagen img { max-width: 100%; }
+.container{
+    display:flex;
+    align-items: center;
+}
+.boton{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}

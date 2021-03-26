@@ -23,14 +23,9 @@ export class LoggedComponent implements OnInit {
       this.authSvc.afAuth.authState.subscribe(res=>{
         if(res && res.uid){
           this.usuario.email = res.email;
-          console.log(this.usuario);
-          // this.ocultarLogin = true;
-          // this.ocultarRegistro = true;
           this.ocultarMensaje = false;
         }
         else{
-          // this.ocultarLogin = false;
-          // this.ocultarRegistro = false;
           this.ocultarMensaje = true;
         }
       });
@@ -41,7 +36,6 @@ export class LoggedComponent implements OnInit {
       if(res && res.uid){
         this.authSvc.afAuth.signOut();
         this.ocultarBotonLogout = false;
-        console.log(res.email);
       }
       else{
         this.ocultarBotonLogout = true;

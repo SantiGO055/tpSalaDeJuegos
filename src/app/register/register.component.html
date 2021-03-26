@@ -1,12 +1,11 @@
-
-
 <div class="register-page">
     <div class="form">
         
         <form [hidden]="flag" class="register-form">
             <input type="text" placeholder="Email" name="email" [(ngModel)]="email"/>
             <input type="password" placeholder="Password" name="password" [(ngModel)]="password"/>
-            <button>Crear cuenta</button>
+            <!-- (click)="register()" -->
+            <button (click)="register()">Crear cuenta</button>
             <p class="message">Ya estas registrado? <a [routerLink]="'/login'" >Iniciar Sesion</a></p>
         </form>
     </div>

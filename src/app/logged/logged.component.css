@@ -1,3 +1,8 @@
 .divLogged{
     display:flex;
+    align-items: center;
+    flex-direction: row;
+}
+p,button{
+    margin-top: 3%;
 }

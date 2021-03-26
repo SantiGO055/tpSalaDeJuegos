@@ -60,6 +60,9 @@ export class LoginComponent implements OnInit {
       if(user.code == 'auth/wrong-password'){
         window.alert("Contraseña incorrecta, reingrese");
       }
+      if(user.code == 'auth/user-not-found'){
+        window.alert("Usuario inexistente");
+      }
       console.log(user.message);
     }
     
