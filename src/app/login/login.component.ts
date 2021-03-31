@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   // this.user.password = this.password;
   try {
     const user = await this.authSvc.SignIn(this.user,this.password);
-    // console.log(user);
+    console.log(user);
     if (user.message == null ) {
       // console.log("se logueo");
       this.router.navigateByUrl('/');

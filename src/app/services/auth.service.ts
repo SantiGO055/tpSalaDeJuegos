@@ -21,6 +21,7 @@ export class AuthService {
     
     // console.log(user);
     try {
+      this.isLogged = user;
       return await this.afAuth.signInWithEmailAndPassword(user.email, password);
     } 
     catch(error){
