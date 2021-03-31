@@ -1,3 +1,27 @@
 ul{
     margin-top: 2%;
+    
 }
+a{
+    color: #c5f0a4;
+    
+}
+a:hover{
+    color: #35b0ab;
+}
+.navbar-custom{
+    background-color: #226b80;
+}
+.btn{
+    background-color: #faffb8;
+}
+.btn:hover{
+    background-color: #35b0ab !important;
+}
+.btn:active{
+    background: #35b0ab!important;
+}
+.btn:focus{
+    background: #35b0ab!important;
+}
+

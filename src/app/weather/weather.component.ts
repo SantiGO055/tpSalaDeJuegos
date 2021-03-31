@@ -18,7 +18,10 @@ export class WeatherComponent implements OnInit {
   ngOnInit(): void {
   }
   pruebaApi(){
+    
+
     this.serviceApi.pruebaApi(this.ciudad).subscribe(data=>{
+      
       console.log(data);
       this.icono = data.current.condition.icon;
       this.descripcion = data.current.condition.text;

@@ -1,3 +1,6 @@
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UsuariosService } from './services/usuarios.service';
+
 import { environment } from './../environments/environment';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,8 +23,8 @@ import { HomeComponent } from './home/home.component';
 import { LoggedComponent } from './logged/logged.component';
 import { QuiensoyComponent } from './quiensoy/quiensoy.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import * as jQuery from 'jquery';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,9 +47,10 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     CommonModule,
     AngularFireDatabaseModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    NgbModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

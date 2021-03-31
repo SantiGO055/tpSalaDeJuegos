@@ -42,9 +42,9 @@ export class LoginComponent implements OnInit {
   // console.log(this.email);
     
   this.user.email = this.email;
-  this.user.password = this.password;
+  // this.user.password = this.password;
   try {
-    const user = await this.authSvc.SignIn(this.user);
+    const user = await this.authSvc.SignIn(this.user,this.password);
     // console.log(user);
     if (user.message == null ) {
       // console.log("se logueo");

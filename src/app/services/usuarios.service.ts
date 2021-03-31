@@ -1,5 +1,6 @@
 import { User } from './../clases/user';
 
+
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import {AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore'
@@ -8,7 +9,7 @@ import {AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fires
   providedIn: 'root'
 })
 export class UsuariosService {
-  private dbpath = '/usuarios';
+  private dbpath = '/usuarios'; //nombre de la coleccion que creara para los documentos
   usuariosRef: AngularFirestoreCollection<any>;
 
   //inicializo la base de datos en mi servicio
@@ -23,5 +24,12 @@ export class UsuariosService {
   create(usuario: User): any{
     return this.usuariosRef.add({...usuario});
   }
-
+  obtenerUsuarioPorEmail(email:string){
+    return this.usuariosRef.ref.get().then((doc)=>{
+      if(!doc.empty){
+        console.log(doc.docs[0].data());
+      }
+    });
+  }
+  
 }

@@ -1,9 +1,8 @@
 <div class="clima input-group mb-3">
-
     <input class="form-control" aria-describedby="basic-addon1" placeholder="Ingrese ciudad" type="text" [(ngModel)]="ciudad" >
-        <button class="btn btn-outline-secondary" (click)="pruebaApi()">
-            Consultar clima
-        </button>
-        <p value="ingrese ciudad"> {{descripcion}} </p>
-        <img *ngIf="icono" src={{icono}}>
+    <button class="btn btn-outline-secondary" (click)="pruebaApi()">
+        Consultar clima
+    </button>
+    <p value="ingrese ciudad"> {{descripcion}} </p>
+    <img *ngIf="icono" src={{icono}}>
 </div>

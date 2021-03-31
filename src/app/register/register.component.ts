@@ -1,3 +1,4 @@
+import { UsuariosService } from './../services/usuarios.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,23 +13,25 @@ export class RegisterComponent implements OnInit {
   flag: boolean = false;
   email: string ='';
   password: string = '';
+  username: string = '';
   user: User = new User();
   
-  constructor(private authSvc : AuthService, private router: Router) { }
+  constructor(private authSvc : AuthService, private router: Router, private usuariosService: UsuariosService) { }
   ngOnInit(): void {
   }
 
-  prueba(){
-    console.log(this.email);
-    console.log(this.password);
-  }
+  
   async register(){
     this.user.email = this.email;
-    this.user.password = this.password;
-    const user = await this.authSvc.register(this.user);
+    this.user.username = this.username;
+    // this.user.password = this.password;
+    const user = await this.authSvc.register(this.user,this.password);
     if(user.message == null){
       // this.alertaLogueo('Se creo el usuario con email: ' + this.user.email + ' correctamente', 'Registro exitoso');
       console.log("Successfully created user!");
+      this.user.uid = user.user.uid;
+      this.authSvc.SignIn(this.user,this.password);
+      let asd = this.usuariosService.create(this.user);
       this.router.navigateByUrl('/home');
     }
     else{

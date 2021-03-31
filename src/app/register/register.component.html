@@ -2,6 +2,7 @@
     <div class="form">
         
         <form [hidden]="flag" class="register-form">
+            <input type="text" placeholder="Username" name="username" [(ngModel)]="username"/>
             <input type="text" placeholder="Email" name="email" [(ngModel)]="email"/>
             <input type="password" placeholder="Password" name="password" [(ngModel)]="password"/>
             <!-- (click)="register()" -->

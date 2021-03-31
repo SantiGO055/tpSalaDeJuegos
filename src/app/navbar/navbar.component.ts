@@ -13,7 +13,6 @@ export class NavbarComponent implements OnInit {
   ocultarBotonLogout: boolean = true;
   ocultarLogin: boolean = false;
   ocultarRegistro: boolean = false;
-  usuario: User= new User;
   constructor(private authSvc: AuthService) { }
 
   ngOnInit(): void {
