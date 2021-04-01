@@ -1,0 +1,14 @@
+<div class="card w-100 imagen" style="width: 18rem;">
+    
+    <div class="card-body">
+        <input class="form-control" placeholder="Ingrese mensaje" type="text" [(ngModel)]="mensaje" >
+        <div class="boton">
+            <button class="btn btn-outline-secondary" (click)="enviarMensaje()">Enviar</button>
+        </div>
+    
+    </div>
+    <div class="boton">
+        <button class="btn btn-outline-secondary" (click)="obtenerMensaje()">Obtener mensajes</button>
+        {{mensajeObtenido}}
+    </div>
+</div>

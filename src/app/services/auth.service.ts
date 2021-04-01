@@ -36,4 +36,15 @@ export class AuthService {
       return error;
     }
   }
+  obtenerUsuarioLogueado(){
+    if(this.isLogged != null){
+      console.log(this.isLogged);
+      return this.isLogged;
+    }
+    else{
+      console.log("nosta logeado");
+      console.log(this.isLogged);
+      return this.isLogged;
+    }
+  }
 }

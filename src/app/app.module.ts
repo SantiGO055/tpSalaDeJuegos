@@ -25,6 +25,7 @@ import { QuiensoyComponent } from './quiensoy/quiensoy.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MensajesComponent } from './mensajes/mensajes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     LoggedComponent,
     QuiensoyComponent,
+    MensajesComponent,
     
   ],
   imports: [

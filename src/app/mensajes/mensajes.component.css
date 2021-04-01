@@ -1,20 +1,5 @@
-ul{
+.card{
     margin-top: 2%;
-    
-}
-.navbar-toggler{
-    background-color: #faffb8;
-    color: #226b80 !important;
-}
-a{
-    color: #c5f0a4;
-    
-}
-a:hover{
-    color: #35b0ab;
-}
-.navbar-custom{
-    background-color: #226b80;
 }
 .btn{
     background-color: #faffb8;
@@ -28,4 +13,3 @@ a:hover{
 .btn:focus{
     background: #35b0ab!important;
 }
-
