@@ -1,5 +1,6 @@
-import { ApiClimaService } from './../services/api-clima.service';
-import { Pronostico } from './../clases/pronostico';
+import { ApiClimaService } from '../../services/api-clima.service';
+import { Pronostico } from '../../clases/pronostico';
+
 import { Component, OnInit } from '@angular/core';
 
 

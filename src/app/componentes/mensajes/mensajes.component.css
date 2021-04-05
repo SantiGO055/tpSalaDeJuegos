@@ -1,0 +1,27 @@
+.card{
+    margin: 2% 0 0 0;
+}
+.btn{
+    background-color: #faffb8;
+}
+.btnBorrar{
+    background-color: #f05945;
+    color: #c5f0a4;
+}
+.btnEditar{
+    background-color: #c5f0a4;
+}
+.btn:hover{
+    background-color: #35b0ab !important;
+}
+.btn:active{
+    background: #35b0ab!important;
+}
+.btn:focus{
+    background: #35b0ab!important;
+}
+.botonesResultado{
+    display:flex;
+    flex-direction: column;
+    
+}

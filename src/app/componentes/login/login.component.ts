@@ -1,5 +1,5 @@
-import { AuthService } from './../services/auth.service';
-import { User } from './../clases/user';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../clases/user';
 import { Router } from '@angular/router';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';

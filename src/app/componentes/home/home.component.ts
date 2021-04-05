@@ -1,10 +1,10 @@
-import { User } from './../clases/user';
+import { User } from '../../clases/user';
 import { AngularFirestoreCollection } from '@angular/fire/firestore';
-import { UsuariosService } from './../services/usuarios.service';
+import { UsuariosService } from '../../services/usuarios.service';
 import { LoginComponent } from './../login/login.component';
 import { NavbarComponent } from './../navbar/navbar.component';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Collection } from 'typescript';
 
 @Component({

@@ -46,9 +46,16 @@ export class MensajesService {
   //     }
   //   });
   // }
+
+  
   deleteMensaje(mensaje: Mensaje){
     this.mensajeDoc = this.db.doc(`mensajes/${mensaje.id}`);
     this.mensajeDoc.delete();
+  }
+  updateMensaje(mensaje: Mensaje){
+    
+    this.mensajeDoc = this.db.doc(`mensajes/${mensaje.id}`);
+    this.mensajeDoc.update(mensaje);
   }
 
 }

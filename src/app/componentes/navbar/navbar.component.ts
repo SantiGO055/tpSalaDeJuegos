@@ -1,6 +1,6 @@
 import { LoggedComponent } from './../logged/logged.component';
-import { User } from './../clases/user';
-import { AuthService } from './../services/auth.service';
+import { User } from '../../clases/user';
+import { AuthService } from '../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

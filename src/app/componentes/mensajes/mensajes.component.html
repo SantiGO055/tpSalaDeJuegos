@@ -1,0 +1,34 @@
+<div class="card" style="width: 20rem;">
+    
+    <div class="card-body">
+        <input class="form-control" placeholder="Ingrese mensaje" type="text" [(ngModel)]="mensaje" >
+        <div class="boton">
+            <button class="btn btn-outline-secondary" (click)="enviarMensaje()">Enviar</button>
+        </div>
+    
+    </div>
+    
+    <div *ngIf="mensajeObtenido.length > 0">
+        <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0"> -->
+            <!-- editingMensaje?.id == mensajeObj.id &&  -->
+            <div class="editar" *ngIf="!ocultoDiv">
+                <input class="form-control" placeholder="Ingrese mensaje" type="text" [(ngModel)]="editMensaje" >
+                <button class="btn btn-outline-secondary" (click)="editarMensaje()">Ok</button>
+            </div>
+        <ul class="list-group list-group-flush list-group-item">
+            
+            <li *ngFor=" let mensj of mensajeObtenido" class="list-group-item"  >
+                Mensaje: {{mensj.mensaje}}
+                
+                Email: {{mensj.usuario.email}}
+                <!-- Usuario: {{mensj.usuario.username}} -->
+                
+                <div class="botonesResultado">
+                    <button class="btn btn-outline-secondary btnBorrar" (click)="deleteMensaje($event,mensj)">Borrar</button>
+                    <button class="btn btn-outline-secondary btnEditar" (click)="mostrarEditado(mensj)" >Editar</button>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>
