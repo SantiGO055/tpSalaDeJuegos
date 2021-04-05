@@ -22,6 +22,7 @@ export class LoggedComponent implements OnInit {
     
       this.authSvc.afAuth.authState.subscribe(res=>{
         if(res && res.uid){
+          
           this.usuario.email = res.email;
           this.ocultarMensaje = false;
         }

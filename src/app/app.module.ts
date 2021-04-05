@@ -1,4 +1,4 @@
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { UsuariosService } from './services/usuarios.service';
 
 import { environment } from './../environments/environment';
@@ -50,7 +50,9 @@ import { MensajesComponent } from './mensajes/mensajes.component';
     CommonModule,
     AngularFireDatabaseModule,
     NgbCollapseModule,
-    NgbModule
+    NgbModule,
+    AngularFirestoreModule
+
   ],
   providers: [AuthService, UsuariosService],
   bootstrap: [AppComponent]

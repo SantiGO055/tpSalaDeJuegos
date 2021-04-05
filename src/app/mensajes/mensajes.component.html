@@ -7,8 +7,16 @@
         </div>
     
     </div>
-    <div class="boton">
-        <button class="btn btn-outline-secondary" (click)="obtenerMensaje()">Obtener mensajes</button>
-        {{mensajeObtenido}}
+    
+    <div *ngIf="mensajeObtenido.length > 0">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li *ngFor=" let mensj of mensajeObtenido" class="nav-item">
+                Mensaje: {{mensj.mensaje}}
+                
+                Email: {{mensj.usuario.email}}
+                Usuario: {{mensj.usuario.username}}
+                <button class="btn btn-outline-secondary" (click)="deleteMensaje($event,mensj)">Borrar</button>
+            </li>
+        </ul>
     </div>
 </div>

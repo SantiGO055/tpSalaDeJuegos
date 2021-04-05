@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       // this.alertaLogueo('Se creo el usuario con email: ' + this.user.email + ' correctamente', 'Registro exitoso');
       console.log("Successfully created user!");
       this.user.uid = user.user.uid;
-      this.authSvc.SignIn(this.user,this.password);
+      // this.authSvc.SignIn(this.user,this.password);
       let asd = this.usuariosService.create(this.user);
       this.router.navigateByUrl('/home');
     }

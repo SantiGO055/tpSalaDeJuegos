@@ -9,32 +9,60 @@ import{ Mensaje } from './../clases/mensaje';
   styleUrls: ['./mensajes.component.css']
 })
 export class MensajesComponent implements OnInit {
+
   mensaje:string = '';
-  mensajeObtenido : any;
+  mensajeObtenido : Mensaje[];
   user: User = new User();
+  aux: User = new User();
+  
+  mensajeObj = {} as Mensaje;
+
   constructor(private authSvc: AuthService, private mensajeService: MensajesService) {
-    
+    this.mensajeObtenido = [];
    }
 
   ngOnInit(): void {
+    this.mensajeService.getAll().subscribe((mensajes : Mensaje[])=>{
+      console.log(mensajes);
+      this.mensajeObtenido =  mensajes;
+    });
   }
 
-  enviarMensaje(){
-    this.user = this.authSvc.obtenerUsuarioLogueado();
+   enviarMensaje(){
+    this.user = this.authSvc.isLogged;
+
+    console.log(this.user);
+
     if(this.user){
-      console.log(this.user);
-      let mensaje: Mensaje = new Mensaje(this.mensaje,this.user);
-      console.log(mensaje);
-      console.log(this.mensajeService.create(mensaje));
+      this.mensajeObj.mensaje = this.mensaje;
+      console.log(this.user.email);
+
+      this.aux.email = this.user.email;
+      this.aux.username = this.user.username;
+      this.aux.uid = this.user.uid;
+
+      this.mensajeObj.usuario = this.aux;
+      
+      // this.mensajeObj.usuario.email = this.user.email;
+
+      // this.mensajeObj.usuario.username = this.user.username;
+      // this.mensajeObj.usuario.uid = this.user.uid;
+      console.log(this.mensajeObj);
+      // console.log(this.mensajeObj.usuario);
+      
+      this.mensajeService.add(this.mensajeObj);
     }
     else{
       console.log("usuario deslogueado");
     }
   }
   obtenerMensaje(){
-    this.user = this.authSvc.obtenerUsuarioLogueado();
-    console.log(this.user.email);
-    this.mensajeObtenido = this.mensajeService.getMensajeFromEmail(this.user.email);
-    console.log(this.mensajeObtenido);
+    
+    
   }
+  deleteMensaje(event:any,mensaje:Mensaje){
+    console.log(event);
+    this.mensajeService.deleteMensaje(mensaje);
+  }
+  
 }
