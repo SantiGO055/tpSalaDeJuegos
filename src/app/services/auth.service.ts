@@ -30,21 +30,26 @@ export class AuthService {
   }
   async register(user: User,password:string) {
     try {
-      return await this.afAuth.createUserWithEmailAndPassword(user.email,password);
+      var aux = this.afAuth.createUserWithEmailAndPassword(user.email,password);
+      (await aux).user?.updateProfile({
+        displayName: user.username
+      })
+      return await aux;
     } catch (error) {
       console.log('Error on register user', error);
       return error;
     }
   }
   obtenerUsuarioLogueado(){
-    if(this.isLogged != null){
-      console.log(this.isLogged);
-      return this.isLogged;
-    }
-    else{
-      console.log("nosta logeado");
-      console.log(this.isLogged);
-      return this.isLogged;
-    }
+    return this.afAuth.authState;
+    // if(this.isLogged != null){
+    //   console.log(this.isLogged);
+    //   return this.isLogged;
+    // }
+    // else{
+    //   console.log("nosta logeado");
+    //   console.log(this.isLogged);
+    //   return this.isLogged;
+    // }
   }
 }

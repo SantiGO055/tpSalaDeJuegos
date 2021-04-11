@@ -26,6 +26,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MensajesComponent } from './componentes/mensajes/mensajes.component';
+
+import { Error404Component } from './componentes/error404/error404.component';
+import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,8 @@ import { MensajesComponent } from './componentes/mensajes/mensajes.component';
     LoggedComponent,
     QuiensoyComponent,
     MensajesComponent,
+    Error404Component,
+    SalaChatComponent,
     
   ],
   imports: [

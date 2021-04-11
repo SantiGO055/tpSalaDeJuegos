@@ -1,9 +1,15 @@
 import { User } from "./user";
 
-export interface Mensaje {
-    id: string;
-    mensaje: string;
-    usuario: User;
+export class Mensaje {
+    id: string = '';
+    mensaje: string = '';
+    usuario: User = new User();
+    
+    hora: string = '';
+
+    constructor(){
+        
+    }
     
     
 }

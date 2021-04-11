@@ -1,3 +1,4 @@
+import { Error404Component } from './componentes/error404/error404.component';
 import { RegisterComponent } from './componentes/register/register.component';
 import { QuiensoyComponent } from './componentes/quiensoy/quiensoy.component';
 import { AuthguardGuard } from './guard/authguard.guard';
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'home',  component: HomeComponent},
   { path: 'quienSoy', component: QuiensoyComponent},
-  //puedo hacer { path: '**', component: HomeComponent}
+  
+  { path: '**', component: Error404Component}
   //para especificar que si no encuentro ninguna ruta redirijo a un componente de error 404
   //router link rutea desde html y la navegacion rutea desde typescript
 ];
