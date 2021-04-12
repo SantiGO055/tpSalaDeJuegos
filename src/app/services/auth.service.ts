@@ -10,7 +10,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 })
 export class AuthService {
   public isLogged: any = false;
-
+  logueado : boolean = false;
   constructor(public afAuth: AngularFireAuth,private router: Router) {
     afAuth.authState.subscribe(user => (this.isLogged = user));
    }
@@ -42,14 +42,16 @@ export class AuthService {
   }
   obtenerUsuarioLogueado(){
     return this.afAuth.authState;
-    // if(this.isLogged != null){
-    //   console.log(this.isLogged);
-    //   return this.isLogged;
-    // }
-    // else{
-    //   console.log("nosta logeado");
-    //   console.log(this.isLogged);
-    //   return this.isLogged;
-    // }
+  }
+  ChequearLogueado(){
+    this.afAuth.authState.subscribe(res=>{
+      if(res && res.uid){
+        this.logueado = true;
+      }
+      else{
+        this.logueado = false;
+      }
+    });
+    return this.logueado;
   }
 }

@@ -1,5 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.test{
+  
+  flex-direction: row;
+  background-color: #35b0ab !important;
+  padding: 2% 1% !important;
+  width: 30% !important;
+  margin: 1%;
+
+}
+.test:hover{
+  background-color: #226b80 !important;
+}
 .borderFade {
     padding-bottom: 1px;
     color: hsl(222, 25%, 14%);

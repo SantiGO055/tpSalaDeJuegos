@@ -11,13 +11,17 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   public toggleNavbar = true;
   ocultarBotonLogout: boolean = true;
-  ocultarLogin: boolean = false;
+  ocultarLogin: boolean = true;
   ocultarRegistro: boolean = false;
-  constructor(private authSvc: AuthService) { }
 
-  ngOnInit(): void {
+  constructor(private authSvc: AuthService) {
     
+   }
+  usuario : User = new User();
+  ngOnInit(): void {
+    this.ocultarLogin = this.authSvc.ChequearLogueado();
   }
+
   // async desloguear(){
   //   this.authSvc.afAuth.authState.subscribe(res=>{
   //     if(res && res.uid){

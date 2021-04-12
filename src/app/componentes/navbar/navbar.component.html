@@ -15,15 +15,15 @@
       <a class="navbar-brand" [routerLink]="'/'"><img src="assets/joystickIcon.png"></a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         
-        <li class="nav-item" [hidden]="ocultarLogin">
+        <li class="nav-item" *ngIf="ocultarLogin">
           <a [routerLink]="'/login'" routerLinkActive="active" class="nav-link borderFade">Login</a>
         </li>
-        <li class="nav-item" [hidden]="ocultarRegistro">
-          <a [routerLink]="'/register'" routerLinkActive="active" class="nav-link borderFade" href="#">Registrarse</a>
+        <li class="nav-item" *ngIf="ocultarLogin">
+          <a [routerLink]="'/register'" routerLinkActive="active" class="nav-link borderFade" >Registrarse</a>
         </li>
 
         <li class="nav-item">
-          <a [routerLink]="'/quienSoy'" routerLinkActive="active" class="nav-link borderFade" href="#">Quien soy</a>
+          <a [routerLink]="'/quienSoy'" routerLinkActive="active" class="nav-link borderFade">Quien soy</a>
         </li>
         <li class="nav-item">
           
@@ -34,13 +34,13 @@
         </li> -->
       </ul>
 
-      
+      <app-logged class="logged" name="usuario" [usuario]="usuario"></app-logged>
       <div class="btn-group mr-3">
         
         <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
           <button class="btn btn-outline-secondary" ngbDropdownToggle>Juegos</button>
           <div class="dropdown-menu" ngbDropdownMenu>
-            <button ngbDropdownItem>Tic tac toe</button>
+            <button ngbDropdownItem [routerLink]="'/juegos/ppt'">Piedra papel o tijera</button>
             <button ngbDropdownItem>Battlefield</button>
             <button ngbDropdownItem>Call of duty</button>
           </div>

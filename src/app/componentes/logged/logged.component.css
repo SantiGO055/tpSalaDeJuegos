@@ -8,5 +8,20 @@ p,button{
 
 }
 p{
-    color: #226b80;
+    
+    color: #c5f0a4;
+}
+.btn{
+    background-color: #faffb8;
+    border: 0 !important;
+}
+.btn:hover{
+    background-color: #35b0ab !important;
+    
+}
+.btn:active{
+    background: #35b0ab!important;
+}
+.btn:focus{
+    background: #35b0ab!important;
 }

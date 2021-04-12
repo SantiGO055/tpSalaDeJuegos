@@ -13,18 +13,28 @@ export class AuthguardGuard implements CanActivate {
   ){
 
   }
-  canActivate(
-    route: ActivatedRouteSnapshot,
+  canActivate(next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.auth.isLogged) {
-        this.router.navigate(['/home']);
-       return true;
-      }
-      else{
-        console.log('Acces Denied');
-        this.router.navigate(['login']);
-        return false;
-      }
+      
+        if(this.auth.isLogged){
+          this.router.navigate(['/home']);
+          return true;
+        }
+        else{
+          console.log('Acces Denied');
+          this.router.navigate(['/login']);
+          return false;
+        }
+        // this.auth.afAuth.onAuthStateChanged((user)=>{
+      // if (this.auth.isLogged) {
+      //   this.router.navigate(['/home']);
+      //  return true;
+      // }
+      // else{
+      //   console.log('Acces Denied');
+      //   this.router.navigate(['login']);
+      //   return false;
+      // }
   }
   
 }

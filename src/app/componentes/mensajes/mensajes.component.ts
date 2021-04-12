@@ -43,21 +43,21 @@ export class MensajesComponent implements OnInit {
     });
     
   }
-  obtenerFechaHora(){
-    var segString: string = '';
+  // obtenerFechaHora(){
+  //   var segString: string = '';
     
 
-    if(this.fecha.getSeconds().toString().length >= 2){
-        segString = this.fecha.getSeconds().toString();
-        // console.log(this.segString);
-      }
-    else{
-    segString = "0"+ this.fecha.getSeconds().toString();
-    }
-    var fechaCompleta = this.fecha.getDate() + "/" + this.fecha.getMonth()+ "/" + this.fecha.getFullYear();
+  //   if(this.fecha.getSeconds().toString().length >= 2){
+  //       segString = this.fecha.getSeconds().toString();
+  //       // console.log(this.segString);
+  //     }
+  //   else{
+  //   segString = "0"+ this.fecha.getSeconds().toString();
+  //   }
+  //   var fechaCompleta = this.fecha.getDate() + "/" + this.fecha.getMonth()+ "/" + this.fecha.getFullYear();
 
-    return fechaCompleta + "-" + this.fecha.getHours() + ":" + this.fecha.getMinutes()+ ":" +  segString;
-  }
+  //   return fechaCompleta + "-" + this.fecha.getHours() + ":" + this.fecha.getMinutes()+ ":" +  segString;
+  // }
 
    enviarMensaje(){
     this.user = this.authSvc.isLogged;
@@ -70,7 +70,7 @@ export class MensajesComponent implements OnInit {
       this.aux.username = this.user.username;
       this.aux.uid = this.user.uid;
       this.mensajeObj.usuario = this.aux;
-      // this.mensajeObj.hora = this.obtenerFechaHora();
+      this.mensajeObj.hora = this.user.obtenerFechaHora();
       
       
       this.mensajeService.add(this.mensajeObj);

@@ -18,12 +18,10 @@ export class LoginComponent implements OnInit {
   passwordRegister: string = '';
   flag: boolean = true;
   
+  
  constructor(private afAuth: AngularFireAuth,
    private router: Router,
-   private fb: FormBuilder,
-   private ngZone: NgZone,
-   private authSvc: AuthService,
-   private formBuilder: FormBuilder) { 
+   private authSvc: AuthService) { 
 
    }
 
@@ -32,49 +30,53 @@ export class LoginComponent implements OnInit {
 
   
   ngOnInit(): void {
-    
   }
   // if(this.router.routerState.snapshot.url == "/LoginComponent"){
   //   this.flag = !this.flag;
   // }
   async login(){
-  
-  // console.log(this.email);
     
-  this.user.email = this.email;
-  // this.user.password = this.password;
-  try {
-    const user = await this.authSvc.SignIn(this.user,this.password);
-    console.log(user);
-    if (user.message == null ) {
-      // console.log("se logueo");
-      this.router.navigateByUrl('/');
+    this.user.email = this.email;
+    try {
+      const user = await this.authSvc.SignIn(this.user,this.password);
+      console.log(user);
+      if (user.message == null ) {
+        console.log("se logueo");
+        this.router.navigateByUrl('/');
+      }
+      else{
+        if(user.code == 'auth/invalid-email'){
+          window.alert("Ingrese un email valido por favor");
+        }
+        if(user.code == 'auth/argument-error'){
+          window.alert("Complete la contraseña por favor.");
+        }
+        if(user.code == 'auth/wrong-password'){
+          window.alert("Contraseña incorrecta, reingrese");
+        }
+        if(user.code == 'auth/user-not-found'){
+          window.alert("Usuario inexistente");
+        }
+        console.log(user.message);
+      }
+      
+    } catch (error) {
+      
+      console.log(error);
     }
-    else{
-      if(user.code == 'auth/invalid-email'){
-        window.alert("Ingrese un email valido por favor");
-      }
-      if(user.code == 'auth/argument-error'){
-        window.alert("Complete la contraseña por favor.");
-      }
-      if(user.code == 'auth/wrong-password'){
-        window.alert("Contraseña incorrecta, reingrese");
-      }
-      if(user.code == 'auth/user-not-found'){
-        window.alert("Usuario inexistente");
-      }
-      console.log(user.message);
-    }
-    
-  } catch (error) {
-    
-    console.log(error);
-    // 
   }
-    // }
-  }
-  register(){
+  completarCamposTest1(){
+    this.email = "test1@test.com";
+    this.password = "test123";
 
+  }
+  completarCamposTest2(){
+    this.email = "test2@test.com";
+    this.password = "test123";
+  }
+  completarCamposTest3(){
+    this.email = "test3@test.com";
+    this.password = "test123";
   }
   
 

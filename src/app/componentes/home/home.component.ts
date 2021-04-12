@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   usuarioLogueado: any = "";
   email:any = '';
   usuario: User = new User();
+  
   constructor(private usuariosService: UsuariosService, private authSvc : AuthService) { }
 
   ngOnInit(): void {

@@ -21,7 +21,6 @@ export class SalaChatComponent implements OnInit {
   ownEmail!: string;
   @ViewChild('scroller') private divMensaje!: ElementRef;
   items:Array<string>=[];
-  timeStamp: Date = new Date();
 
 
 
@@ -62,42 +61,18 @@ export class SalaChatComponent implements OnInit {
       this.listadoMensajes = data;
     });
   }
-  obtenerFechaHora(){
-    var segString: string = '';
-    var minString: string = '';
-    var fecha : Date = new Date();
-    if(fecha.getSeconds().toString().length >= 2){
-        segString = fecha.getSeconds().toString();
-        // console.log(this.segString);
-      }
-    else{
-      segString = "0"+ fecha.getSeconds().toString();
-    }
-    if(fecha.getMinutes().toString().length >=2){
-      minString = fecha.getSeconds().toString();
-    }
-    else{
-      minString = "0"+fecha.getMinutes().toString();
-    }
-    var fechaCompleta = fecha.getDate() + "/" + fecha.getMonth()+ "/" + fecha.getFullYear();
-
-    return fechaCompleta + "-" + fecha.getHours() + ":" + minString + ":" +  segString;
-  }
 
   enviarMensaje(){
-    if(this.user){
-      // this.mostrarMensajeLogueado();
-      this.mensajeObj.mensaje = this.mensaje;
-      
 
-      this.mensajeObj.usuario = this.user;
-      this.mensajeObj.hora = this.obtenerFechaHora();
-      console.log(this.obtenerFechaHora());
-      
-      
-      this.mensajeService.enviarMensaje(this.mensajeObj);
-      console.log(this.listadoMensajes);
-      console.log(this.isOwnMessage);
+    if(this.user){
+      if(this.mensaje != ''){
+        this.mensajeObj.mensaje = this.mensaje;
+        this.mensajeObj.usuario = this.user;
+        this.mensajeObj.hora = this.user.obtenerFechaHora();
+        this.mensajeService.enviarMensaje(this.mensajeObj);
+        // console.log(this.listadoMensajes);
+        // console.log(this.isOwnMessage);
+      }
     }
     else{
       console.log("usuario deslogueado");

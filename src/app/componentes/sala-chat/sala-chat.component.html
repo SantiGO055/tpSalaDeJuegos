@@ -30,16 +30,7 @@
                     >
                     
                         <li class="left clearfix" ><span class="chat-img pull-left" >
-                            <!-- <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" /> -->
                         </span>
-                            <!-- <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">{{mensaje.usuario.username}}</strong><p>{{mensaje.hora}} </p>
-                                </div>
-                                <p>
-                                    {{mensaje.mensaje}}
-                                </p>
-                            </div> -->
                         </li>
                         <div class="messageContainer"
                             [ngClass]="{'isOwnMessageContainer':isOwnMessage}">
@@ -51,7 +42,7 @@
                                 </span>
                                 <span class="timestamp" 
                                     [ngClass] = "{'isOwnTimestamp':isOwnMessage}">
-                                    {{ timeStamp | date:'medium' }}
+                                    {{ mensaje.hora | date:'medium' }}
                                 </span>
                             </div>
                             <div class="messageContent"
@@ -68,7 +59,7 @@
                     <div class="input-group">
                         <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." [(ngModel)]="mensaje" />
                         <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat" (click)="enviarMensaje()">
+                            <button class="btn btn-sm" id="btn-chat" (click)="enviarMensaje()">
                                 Enviar</button>
                         </span>
                     </div>

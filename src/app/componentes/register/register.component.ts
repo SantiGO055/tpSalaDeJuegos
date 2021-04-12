@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   password: string = '';
   username: string = '';
   user: User = new User();
-  
+  fecha: Date = new Date();
   constructor(private authSvc : AuthService, private router: Router, private usuariosService: UsuariosService) { }
   ngOnInit(): void {
   }
@@ -25,12 +25,14 @@ export class RegisterComponent implements OnInit {
   async register(){
     this.user.email = this.email;
     this.user.username = this.username;
+    this.user.fecha = this.user.obtenerFechaHora();
     // this.user.password = this.password;
     const user = await this.authSvc.register(this.user,this.password);
     if(user.message == null){
       // this.alertaLogueo('Se creo el usuario con email: ' + this.user.email + ' correctamente', 'Registro exitoso');
       console.log("Successfully created user!");
       this.user.uid = user.user.uid;
+      this.user.fecha = this.user.obtenerFechaHora();
       // this.authSvc.SignIn(this.user,this.password);
       let asd = this.usuariosService.create(this.user);
       this.router.navigateByUrl('/home');
