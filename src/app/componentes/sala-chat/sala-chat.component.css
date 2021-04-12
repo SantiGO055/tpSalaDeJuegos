@@ -77,9 +77,24 @@
     background-color: #eee;
     box-shadow: 0 3px 6px rgba(0,0,0,0.26), 0 3px 6px rgba(0,0,0,0.23);
 }
+.btn{
+    background-color: #4b778d;
+    color: #faffb8 !important;
+    border: 0 !important;
+}
+.btn:hover{
+    background-color: #35b0ab !important;
+    
+}
+.btn:active{
+    background: #35b0ab!important;
+}
+.btn:focus{
+    background: #35b0ab!important;
+}
 
 .isOwnMessageContainer{
-    background-color: #01579B;
+    background-color: #4b778d;
 }
 
 .messageData{
@@ -120,3 +135,29 @@
     background-color: #E3F2FD;
     color: #01579B;
 }
+.imagen{
+    width: 100%;
+    background-color: transparent;
+    
+}
+.btnDesplegarChat{
+    display: flex;
+    width: 10%;
+    background-color: transparent;
+    border:none;
+}
+.btnDesplegarChat:hover{
+    
+}
+.btnDesplegarChat:active{
+    background: transparent !important;
+    outline: none !important;
+    
+    border-color: tomato !important;
+}
+.btnDesplegarChat:focus{
+    background: transparent !important;
+    outline: none !important;
+    
+}
+

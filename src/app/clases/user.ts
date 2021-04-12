@@ -29,7 +29,7 @@ export class User {
         else{
             minString = "0"+fecha.getMinutes().toString();
         }
-        var fechaCompleta = fecha.getDate() + "/" + fecha.getMonth()+ "/" + fecha.getFullYear();
+        var fechaCompleta = (fecha.getMonth()+1)+ "/"+  fecha.getDate()  +  "/" + fecha.getFullYear();
         console.log(fechaCompleta + "-" + fecha.getHours() + ":" + fecha.getMinutes()+ ":" +  segString);
         return fechaCompleta + "-" + fecha.getHours() + ":" + fecha.getMinutes()+ ":" +  segString;
       }

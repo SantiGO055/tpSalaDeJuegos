@@ -3,21 +3,22 @@ ul{
     
 }
 .navbar-toggler{
-    background-color: #faffb8;
+    background-color: #5eaaa8;
     color: #226b80 !important;
 }
 a{
-    color: #c5f0a4;
+    color: #4b778d;
     
 }
 a:hover{
-    color: #35b0ab;
+    color: #28b5b5;
 }
 .navbar-custom{
-    background-color: #226b80;
+    background-color: #8fd9a8;
 }
 .btn{
-    background-color: #faffb8;
+    background-color: #4b778d;
+    color: #faffb8 !important;
     border: 0 !important;
 }
 .btn:hover{
@@ -31,3 +32,27 @@ a:hover{
     background: #35b0ab!important;
 }
 
+
+.borderFade {
+    padding-bottom: 1px;
+    color: hsl(222, 25%, 14%);
+    position: relative;
+}
+
+.borderFade::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translateY(3px);
+    background: hsl(243, 80%, 62%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.borderFade:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}

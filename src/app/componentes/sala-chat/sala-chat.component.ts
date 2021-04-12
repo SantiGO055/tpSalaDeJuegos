@@ -19,6 +19,8 @@ export class SalaChatComponent implements OnInit {
   title = '';
   isOwnMessage!: boolean;
   ownEmail!: string;
+  mostrarChat:boolean = false;
+
   @ViewChild('scroller') private divMensaje!: ElementRef;
   items:Array<string>=[];
 
@@ -41,6 +43,7 @@ export class SalaChatComponent implements OnInit {
     });
     
   }
+
 
   scrollToBottom(): void {
     this.divMensaje.nativeElement.scrollTop
@@ -70,7 +73,7 @@ export class SalaChatComponent implements OnInit {
         this.mensajeObj.usuario = this.user;
         this.mensajeObj.hora = this.user.obtenerFechaHora();
         this.mensajeService.enviarMensaje(this.mensajeObj);
-        // console.log(this.listadoMensajes);
+        console.log(this.listadoMensajes);
         // console.log(this.isOwnMessage);
       }
     }
@@ -78,4 +81,8 @@ export class SalaChatComponent implements OnInit {
       console.log("usuario deslogueado");
     }
   }
+  mostrarChatFunc(){
+    this.mostrarChat = !this.mostrarChat;
+  }
+
 }
