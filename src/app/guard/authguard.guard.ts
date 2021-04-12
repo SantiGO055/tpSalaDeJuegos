@@ -17,12 +17,13 @@ export class AuthguardGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       
         if(this.auth.isLogged){
-          this.router.navigate(['/home']);
+          
+          
           return true;
         }
         else{
           console.log('Acces Denied');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/ingreso/login']);
           return false;
         }
         // this.auth.afAuth.onAuthStateChanged((user)=>{

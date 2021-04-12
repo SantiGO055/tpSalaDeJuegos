@@ -40,7 +40,7 @@ export class LoggedComponent implements OnInit {
           this.authSvc.afAuth.signOut();
           this.ocultarBotonLogout = false;
           localStorage.removeItem("currentUser");
-          this.router.navigate(["/login"]);
+          this.router.navigate(["/ingreso/login"]);
           this.logueado = false;
         }
         else{

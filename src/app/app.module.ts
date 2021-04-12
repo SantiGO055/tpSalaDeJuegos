@@ -1,3 +1,4 @@
+import { AuthguardGuard } from './guard/authguard.guard';
 import { WeatherComponent } from './componentes/weather/weather.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
@@ -59,7 +60,7 @@ import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
     AngularFirestoreModule
 
   ],
-  providers: [AuthService, UsuariosService],
+  providers: [AuthService, UsuariosService,AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

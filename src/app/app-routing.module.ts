@@ -13,10 +13,13 @@ const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthguardGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'home',  component: HomeComponent},
+  { path: 'home',  component: HomeComponent,canActivate: [AuthguardGuard]},
   { path: 'quienSoy', component: QuiensoyComponent},
   
   { path: 'juegos', loadChildren: () => import('./juegos/juegos.module').then(m => m.JuegosModule) },
+  { path: 'ingreso', loadChildren: () => import('./ingreso/ingreso.module').then(m => m.IngresoModule) },
+  
+  { path: 'navbar', loadChildren: () => import('./navbar/navbar.module').then(m => m.NavbarModule) },
   
   { path: '**', component: Error404Component}
   //para especificar que si no encuentro ninguna ruta redirijo a un componente de error 404
