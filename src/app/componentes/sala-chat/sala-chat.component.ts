@@ -50,8 +50,16 @@ export class SalaChatComponent implements OnInit {
     = this.divMensaje.nativeElement.scrollHeight;
   }
   ngAfterViewChecked() {
+    console.log("afterviewchecked");
     this.scrollToBottom();
   }
+  // ngAfterViewInit() {
+  //   console.log("afterinit");
+  //   setTimeout(() => {
+  //     this.scrollToBottom();
+  //     console.log(this.divMensaje.nativeElement.innerText);
+  //   }, 3000);
+  // }
 
   cargarMensajes(): void {
     this.mensajeService.getAll().snapshotChanges().pipe(
@@ -64,9 +72,15 @@ export class SalaChatComponent implements OnInit {
       this.listadoMensajes = data;
     });
   }
-
+  // enviarConEnter(e:any){
+  //   console.log(e);
+  //   if (e.keyCode === 13) {
+  //     e.preventDefault();
+  //     this.enviarMensaje();
+  //   }
+  // }
   enviarMensaje(){
-
+    
     if(this.user){
       if(this.mensaje != ''){
         this.mensajeObj.mensaje = this.mensaje;
@@ -80,6 +94,7 @@ export class SalaChatComponent implements OnInit {
     else{
       console.log("usuario deslogueado");
     }
+    this.mensaje = '';
   }
   mostrarChatFunc(){
     this.mostrarChat = !this.mostrarChat;
