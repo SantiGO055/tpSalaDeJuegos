@@ -21,6 +21,8 @@ const routes: Routes = [
   
   { path: 'navbar', loadChildren: () => import('./navbar/navbar.module').then(m => m.NavbarModule) },
   
+  { path: 'chat', loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule) },
+  
   { path: '**', component: Error404Component}
   //para especificar que si no encuentro ninguna ruta redirijo a un componente de error 404
   //router link rutea desde html y la navegacion rutea desde typescript

@@ -5,5 +5,7 @@
 
 }
 .containerChat{
-    justify-content: end !important;
+    
+    top: 50%;
+    
 }

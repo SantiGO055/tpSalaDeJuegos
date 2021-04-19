@@ -1,18 +1,19 @@
 import { AuthService } from './../../services/auth.service';
 import { Mensaje } from './../../clases/mensaje';
 import { MensajesRealtimeService } from './../../services/mensajes-realtime.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import { User } from 'src/app/clases/user';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-sala-chat',
-  templateUrl: './sala-chat.component.html',
-  styleUrls: ['./sala-chat.component.css']
+  selector: 'app-componente-chat',
+  templateUrl: './componente-chat.component.html',
+  styleUrls: ['./componente-chat.component.css']
 })
-export class SalaChatComponent implements OnInit {
+export class ComponenteChatComponent implements OnInit {
+
   mensajeObj: Mensaje = new Mensaje();
-  user: User = new User();
+  user: User= new User();
   mensaje: string = '';
   listadoMensajes?: any[];
   currentIndex = -1;
@@ -20,6 +21,7 @@ export class SalaChatComponent implements OnInit {
   isOwnMessage!: boolean;
   ownEmail!: string;
   mostrarChat:boolean = false;
+  localStorageUsername!: string;
 
   @ViewChild('scroller') private divMensaje!: ElementRef;
   items:Array<string>=[];
@@ -28,7 +30,8 @@ export class SalaChatComponent implements OnInit {
 
   constructor(private mensajeService: MensajesRealtimeService,
     private authSvc: AuthService) {
-      
+      this.localStorageUsername = localStorage.getItem('emailLogueadoLocalStorage');
+
      }
      
 
@@ -37,20 +40,24 @@ export class SalaChatComponent implements OnInit {
     this.authSvc.obtenerUsuarioLogueado().subscribe(user=>{
       this.user.email= <string>user?.email;
       this.user.uid= <string>user?.uid;
-      this.user.username= <string>user?.displayName;
+      this.user.username = this.localStorageUsername;
+      // <string>user?.displayName;
       this.ownEmail = this.user.email;
       this.isOwnMessage = this.ownEmail === this.user.email;
     });
     
   }
 
-
+  muestroChat(event: any){
+    console.log("llegue");
+    this.mostrarChat = event;
+  }
   scrollToBottom(): void {
     this.divMensaje.nativeElement.scrollTop
     = this.divMensaje.nativeElement.scrollHeight;
   }
   ngAfterViewChecked() {
-    console.log("afterviewchecked");
+    // console.log("afterviewchecked");
     this.scrollToBottom();
   }
   // ngAfterViewInit() {
@@ -80,14 +87,18 @@ export class SalaChatComponent implements OnInit {
   //   }
   // }
   enviarMensaje(){
+    console.info(this.localStorageUsername)
     
+
     if(this.user){
+      console.info(this.user);
       if(this.mensaje != ''){
+        console.info(this.mensaje);
         this.mensajeObj.mensaje = this.mensaje;
         this.mensajeObj.usuario = this.user;
         this.mensajeObj.hora = this.user.obtenerFechaHora();
         this.mensajeService.enviarMensaje(this.mensajeObj);
-        console.log(this.listadoMensajes);
+        console.log(this.mensaje);
         // console.log(this.isOwnMessage);
       }
     }
@@ -98,6 +109,9 @@ export class SalaChatComponent implements OnInit {
   }
   mostrarChatFunc(){
     this.mostrarChat = !this.mostrarChat;
+  }
+  enviarMensajeConEnter(e:any){
+    this.enviarMensaje();
   }
 
 }

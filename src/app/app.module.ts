@@ -1,7 +1,10 @@
+import { NavbarModule } from './navbar/navbar.module';
+import { ChatModule } from './chat/chat.module';
+import { ComponenteChatComponent } from './chat/componente-chat/componente-chat.component';
 import { AuthguardGuard } from './guard/authguard.guard';
 import { WeatherComponent } from './componentes/weather/weather.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { NavbarComponent } from './componentes/navbar/navbar.component';
+// import { NavbarComponent } from './componentes/navbar/navbar.component';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { UsuariosService } from './services/usuarios.service';
@@ -29,11 +32,11 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MensajesComponent } from './componentes/mensajes/mensajes.component';
 
 import { Error404Component } from './componentes/error404/error404.component';
-import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    // NavbarComponent,
     WeatherComponent,
     LoginComponent,
     RegisterComponent,
@@ -42,7 +45,6 @@ import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
     QuiensoyComponent,
     MensajesComponent,
     Error404Component,
-    SalaChatComponent,
     
   ],
   imports: [
@@ -57,10 +59,13 @@ import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
     AngularFireDatabaseModule,
     NgbCollapseModule,
     NgbModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ChatModule,
+    NavbarModule
 
   ],
   providers: [AuthService, UsuariosService,AuthguardGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[LoggedComponent]
 })
 export class AppModule { }

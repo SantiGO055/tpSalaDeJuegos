@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
       console.log(user);
       if (user.message == null ) {
         console.log("se logueo");
+        localStorage.setItem('emailLogueadoLocalStorage', this.user.email);
         this.router.navigateByUrl('/');
       }
       else{

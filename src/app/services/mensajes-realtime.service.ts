@@ -6,7 +6,7 @@ import { Mensaje } from '../clases/mensaje';
   providedIn: 'root'
 })
 export class MensajesRealtimeService {
-  private dbPath = '/MensajesReal';
+  private dbPath = '/mensajesChat';
 
   MensajesRef: AngularFireList<Mensaje>;
   constructor(private db: AngularFireDatabase) {

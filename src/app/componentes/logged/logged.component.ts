@@ -10,45 +10,45 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class LoggedComponent implements OnInit {
   
-  ocultarLogin: boolean = false;
-  ocultarRegistro: boolean = false;
-  ocultarMensaje : boolean = true;
-  ocultarBotonLogout : boolean = true;
-  logueado: boolean = false;
-  @Input() usuario : any;
+  // ocultarLogin: boolean = false;
+  // ocultarRegistro: boolean = false;
+  // ocultarMensaje : boolean = true;
+  // ocultarBotonLogout : boolean = true;
+  // logueado: boolean = false;
+  // @Input() usuario : any;
 
 
-  constructor(private authSvc : AuthService, private router: Router) { }
+  // constructor(private authSvc : AuthService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
     
-      this.authSvc.afAuth.authState.subscribe(res=>{
-        if(res && res.uid){
-          this.logueado = true;
-          this.usuario.email = res.email;
-          this.ocultarMensaje = false;
-        }
-        else{
-          this.logueado = false;
-          this.ocultarMensaje = true;
-        }
-      });
+  //     this.authSvc.afAuth.authState.subscribe(res=>{
+  //       if(res && res.uid){
+  //         this.logueado = true;
+  //         this.usuario.email = res.email;
+  //         this.ocultarMensaje = false;
+  //       }
+  //       else{
+  //         this.logueado = false;
+  //         this.ocultarMensaje = true;
+  //       }
+  //     });
    
-  }
-  async desloguear(){
-    if(this.logueado){
-          this.authSvc.afAuth.signOut();
-          this.ocultarBotonLogout = false;
-          localStorage.removeItem("currentUser");
-          this.router.navigate(["/ingreso/login"]);
-          this.logueado = false;
-        }
-        else{
-          this.ocultarBotonLogout = true;
-          this.logueado = true;
-        }
+  // }
+  // async desloguear(){
+  //   if(this.logueado){
+  //         this.authSvc.afAuth.signOut();
+  //         this.ocultarBotonLogout = false;
+  //         localStorage.removeItem("currentUser");
+  //         this.router.navigate(["/ingreso/login"]);
+  //         this.logueado = false;
+  //       }
+  //       else{
+  //         this.ocultarBotonLogout = true;
+  //         this.logueado = true;
+  //       }
 
-    }
+  //   }
   
 
 }
