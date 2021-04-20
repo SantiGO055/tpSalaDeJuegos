@@ -26,14 +26,15 @@ export class PiedraPapelTijeraComponent implements OnInit {
   }
   obtenerJugadaComp(){
     if(this.choiceCompChar === 's'){
-      this.choiceComp = "Tijera";
+      return this.choiceComp = "Tijera";
     }
     else if(this.choiceCompChar === 'p'){
-      this.choiceComp = "Papel";
+      return this.choiceComp = "Papel";
     }
     else if(this.choiceCompChar === 'r'){
-      this.choiceComp = "Piedra";
+      return this.choiceComp = "Piedra";
     }
+    return this.choiceComp;
   }
 
 
