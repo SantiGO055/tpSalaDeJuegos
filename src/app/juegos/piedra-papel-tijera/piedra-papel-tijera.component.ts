@@ -10,6 +10,8 @@ export class PiedraPapelTijeraComponent implements OnInit {
   result: string = '';
   pointsUser = 0;
   pointsComp =  0;
+  choiceCompChar='';
+  choiceComp!:string;
   constructor(private playGame: GameppService) { }
 
   ngOnInit(): void {
@@ -17,9 +19,22 @@ export class PiedraPapelTijeraComponent implements OnInit {
   }
   play(choice: string): void {
     const result = this.playGame.game(choice);
+    this.choiceCompChar = result.compChoice;
     this.result = result.message;
     this.pointsUser += result.userAdd;
     this.pointsComp += result.compAdd;
   }
+  obtenerJugadaComp(){
+    if(this.choiceCompChar === 's'){
+      this.choiceComp = "Tijera";
+    }
+    else if(this.choiceCompChar === 'p'){
+      this.choiceComp = "Papel";
+    }
+    else if(this.choiceCompChar === 'r'){
+      this.choiceComp = "Piedra";
+    }
+  }
+
 
 }

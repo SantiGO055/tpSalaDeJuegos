@@ -7,17 +7,22 @@
     <div id="comp-label" class="badge">comp</div>
     <span id="user-score">{{ pointsUser }}</span>:<span id="comp-score">{{ pointsComp }}</span>
   </div>
+  <p class="info-game" *ngIf="choiceComp">La computadora eligio: {{choiceComp}}</p>
   <p class="info-game">{{result}}</p>
   
 <div class="choices">
-    <div class="choice" (click)="play('r')">
+    <div class="choice" (click)="play('r')" (click)="obtenerJugadaComp()">
       <img src="/assets/rock.png">
     </div>
-    <div class="choice" (click)="play('p')">
+    <div class="choice" (click)="play('p')" (click)="obtenerJugadaComp()">
       <img src="/assets/paper.png">
     </div>
-    <div class="choice" (click)="play('s')">
+    <div class="choice" (click)="play('s')" (click)="obtenerJugadaComp()">
       <img src="/assets/scissors.png">
     </div>
   </div>
   <p class="info-game">Selecciona tu jugada</p>
+  <button class="choice">Guardar</button>
+  <button>Guardar y salir</button>
+  <button>Salir</button>
+

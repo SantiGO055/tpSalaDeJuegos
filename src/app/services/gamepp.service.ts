@@ -10,6 +10,7 @@ export class GameppService {
     message: string;
     userAdd: number;
     compAdd: number;
+    compChoice:string;
   };
   getComputerChoice(): string {
     const choices = ['r', 'p', 's'];
@@ -23,10 +24,11 @@ export class GameppService {
     message: string;
     userAdd: number;
     compAdd: number;
+    compChoice:string;
   } {
     
-    
-    const playUserComp = userChoice + this.getComputerChoice();
+    const compChoice = this.getComputerChoice();
+    const playUserComp = userChoice + compChoice;
     console.log(`Jugada realizada: ${playUserComp}`);
     
     switch (playUserComp) {
@@ -38,6 +40,7 @@ export class GameppService {
           message: 'Ganas a la computadora',
           userAdd: 1,
           compAdd: 0,
+          compChoice: compChoice
         };
         break;
       // Gana la computadora
@@ -48,6 +51,7 @@ export class GameppService {
           message: 'Gana la computadora',
           userAdd: 0,
           compAdd: 1,
+          compChoice: compChoice
         };
         break;
       // Empatamos
@@ -55,9 +59,10 @@ export class GameppService {
       case 'pp':
       case 'ss':
         this.playStatus = {
-          message: 'Habéis elegido la misma jugada y habéis empatado',
+          message: 'Eligieron misma jugada. Hay empate',
           userAdd: 0,
           compAdd: 0,
+          compChoice: compChoice
         };
         break;
     }
