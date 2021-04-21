@@ -1,52 +1,58 @@
+<div class="contenedorBotonYChat">
 
- <app-boton-abrir-chat (mostrarChatFunc)="muestroChat($event)"></app-boton-abrir-chat>
- <div  *ngIf="mostrarChat">
-     <div class="contenedor">
-         <div class="row">
-             <div class="col-md-5">
-                 <div class="panel panel-primary">
-                     <div class="panel-body" #scroller>
-                         <ul class="chat" *ngFor="let mensaje of listadoMensajes; let i = index"
-                         [class.scrollBody]="mensaje != null"
-                         [class.active]="i == currentIndex"
-                         >
-                         
-                             <li class="left clearfix" ><span class="chat-img pull-left" >
-                             </span>
-                             </li>
-                             <div class="chat-message">
-                                 
-                                 <div class="right-bubble" [ngClass]="{'right-bubble': mensaje.usuario.username === localStorageUsername, 'left-bubble': mensaje.usuario.username !== localStorageUsername}">
+
+    <app-boton-abrir-chat *ngIf="!mostrarChat" (mostrarChatFunc)="muestroChat($event)"></app-boton-abrir-chat>
+        <button *ngIf="mostrarChat" type="button" class="close" aria-label="Close" (click)="escondoChat()" >X</button>
+    <div  *ngIf="mostrarChat">
+        <div class="contenedor">
+            <div class="">
+                <div class="">
+                    
+                    <div class="panel panel-primary">
+                        
+                        <div class="panel-body" #scroller>
+                            <ul class="chat" *ngFor="let mensaje of listadoMensajes; let i = index"
+                            [class.scrollBody]="mensaje != null"
+                            [class.active]="i == currentIndex"
+                            >
+                            
+                                <li class="left clearfix" ><span class="chat-img pull-left" >
+                                </span>
+                                </li>
+                                <div class="chat-message">
                                     
-                                    <!-- <span class="msg-name" *ngIf="mensaje.usuario.username === localStorageUsername">Yo</span> -->
-                                     <span class="msg-name" *ngIf="mensaje.usuario.username !== localStorageUsername">{{mensaje.usuario.username}}</span>
-                                     <div class="messageContent">
-                                        {{ mensaje.mensaje }}
-                                     </div>
-                                     <span class="timestamp" >
-                                        {{ mensaje.hora | date:'medium' }}
-                                    </span> 
+                                    <div class="right-bubble" [ngClass]="{'right-bubble': mensaje.usuario.username === localStorageUsername, 'left-bubble': mensaje.usuario.username !== localStorageUsername}">
+                                        
+                                        <!-- <span class="msg-name" *ngIf="mensaje.usuario.username === localStorageUsername">Yo</span> -->
+                                        <span class="msg-name" *ngIf="mensaje.usuario.username !== localStorageUsername">{{mensaje.usuario.username}}</span>
+                                        <div class="messageContent">
+                                            {{ mensaje.mensaje }}
+                                        </div>
+                                        <span class="timestamp" >
+                                            {{ mensaje.hora | date:'medium' }}
+                                        </span> 
+    
+                                    </div>
+                                    
+                                </div>
+                                
+                            </ul>
+                        </div>
+                        
+    
+                        <div class="panel-footer" >
+                            <div class="input-group" >
+                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Ingrese mensaje..." [(ngModel)]="mensaje" (keydown.enter)="enviarMensajeConEnter($event)"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-outline-secondary" id="btn-chat" (click)="enviarMensaje()">
+                                        Enviar</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
  
-                                 </div>
-                                 
-                             </div>
-                             
-                         </ul>
-                     </div>
-                     
- 
-                     <div class="panel-footer" >
-                         <div class="input-group" >
-                             <input id="btn-input" type="text" class="form-control input-sm" placeholder="Ingrese mensaje..." [(ngModel)]="mensaje" (keydown.enter)="enviarMensajeConEnter($event)"/>
-                             <span class="input-group-btn">
-                                 <button class="btn btn-outline-secondary" id="btn-chat" (click)="enviarMensaje()">
-                                     Enviar</button>
-                             </span>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
- 
+</div>

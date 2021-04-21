@@ -1,3 +1,4 @@
+import { ChatModule } from './../chat/chat.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +10,8 @@ import { PiedraPapelTijeraComponent } from './piedra-papel-tijera/piedra-papel-t
   declarations: [PiedraPapelTijeraComponent],
   imports: [
     CommonModule,
-    JuegosRoutingModule
+    JuegosRoutingModule,
+    ChatModule
   ]
 })
 export class JuegosModule { }

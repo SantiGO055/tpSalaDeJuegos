@@ -33,6 +33,43 @@ body{
     border-radius: 20px;
     margin-right: 10px;
 }
+
+.btnSalir{
+    background-color: #4b778d !important;
+    color: #faffb8 !important;
+    border: 0 !important;
+}
+.btnSalir:hover{
+    background-color: #35b0ab !important;
+    
+}
+.btnSalir:active{
+    background: #35b0ab!important;
+}
+.btnSalir:focus{
+    background: #35b0ab!important;
+}
+
+
+.btn{
+    padding: 20px;
+    text-align: center;
+    background-color: #faffb8;
+    border: 0 !important;
+    margin: 0 10px;
+    
+}
+.btn:hover{
+    background-color: #35b0ab !important;
+    
+}
+.btn:active{
+    background: #35b0ab!important;
+}
+.btn:focus{
+    background: #35b0ab!important;
+}
+
 .title {
     width: 100%;
     background: white;

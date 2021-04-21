@@ -4,7 +4,7 @@ import { MensajesRealtimeService } from './../../services/mensajes-realtime.serv
 import { Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import { User } from 'src/app/clases/user';
 import { map } from 'rxjs/operators';
-
+declare var $:any;
 @Component({
   selector: 'app-componente-chat',
   templateUrl: './componente-chat.component.html',
@@ -36,6 +36,7 @@ export class ComponenteChatComponent implements OnInit {
      
 
   ngOnInit(): void {
+    $('[data-toggle="tooltip"]').tooltip();
     this.cargarMensajes();
     this.authSvc.obtenerUsuarioLogueado().subscribe(user=>{
       this.user.email= <string>user?.email;
@@ -47,9 +48,11 @@ export class ComponenteChatComponent implements OnInit {
     });
     
   }
-
+  escondoChat(){
+    this.mostrarChat = false;
+  }
   muestroChat(event: any){
-    console.log("llegue");
+    
     this.mostrarChat = event;
   }
   scrollToBottom(): void {
