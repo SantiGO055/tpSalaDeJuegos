@@ -1,4 +1,4 @@
-import { ChatMensaje } from './chat-mensaje';
+import { ChatMensaje } from '../chat-mensaje';
 
 describe('ChatMensaje', () => {
   it('should create an instance', () => {

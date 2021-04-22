@@ -36,6 +36,9 @@ export class PiedraPapelTijeraComponent implements OnInit {
     }
     return this.choiceComp;
   }
+  guardar(salir : boolean){
+    
+  }
 
 
 }

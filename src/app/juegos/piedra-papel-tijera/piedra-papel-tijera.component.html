@@ -23,8 +23,8 @@
   </div>
   <p class="info-game">Selecciona tu jugada</p>
   <div class="choices">
-    <button class="btn btn-outline-secondary">Guardar</button>
-    <button class="btn btn-outline-secondary">Guardar y salir</button>
+    <button class="btn btn-outline-secondary" (click)="guardar(false)">Guardar</button>
+    <button class="btn btn-outline-secondary" (click)="guardar(true)">Guardar y salir</button>
     <button class="btn btn-outline-secondary btnSalir" routerLink="/home">Salir</button>
 
   </div>
