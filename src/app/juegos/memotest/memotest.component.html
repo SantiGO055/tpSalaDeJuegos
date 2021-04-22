@@ -1,9 +1,29 @@
 <app-navbar></app-navbar>
-<div class="card" >
-    <div class="face back">
-        <img src="assets/card-back.jpg">
+<!-- <div class="contenedorTarjetas grid" >
+
+    <div class="card-deck" >
+        <div class="row">
+            <div clas="col-sm" >
+
+                <div class="" >
+                    <img *ngFor="let imagen of cardImagesUrl" [src]="imagen">
+                </div>
+            </div>
+        
+            <div clas="col-sm" >
+
+                <div class="" >
+                    <img *ngFor="let imagen of cardImagesUrlAux" [src]="imagen">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="face front">
-        <!-- <img [src]="data.flag"> -->
+</div> -->
+
+<app-cronometro [tiempoMinutos]="tiempoMinutos" [juegoIniciado]="juegoIniciado" (tiempoTerminado)="detener()"></app-cronometro>
+  <div class="p-16">
+    <div class="grid p-16">
+      <app-game-card *ngFor="let c of cards; let idx=index" [data]="c" (cardClicked)="cardClicked(idx)">
+      </app-game-card>
     </div>
-</div>
+  </div>

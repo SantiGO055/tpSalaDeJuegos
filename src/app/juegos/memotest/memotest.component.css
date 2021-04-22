@@ -1,0 +1,27 @@
+/* img{
+    width:15%;
+    margin: 1px 1px;
+}
+.card{
+    display: flex;
+    flex-direction: row;
+}
+.contenedorTarjetas{
+    position: absolute;
+    margin: 1px 5%;
+    padding: 5px;
+    left: 20%;
+} */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 150px);
+    gap: 16px;
+
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(2, 150px);
+    }
+}

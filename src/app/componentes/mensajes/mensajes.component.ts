@@ -39,7 +39,7 @@ export class MensajesComponent implements OnInit {
   ngOnInit(): void {
     this.mensajeService.getAll().subscribe((mensajes : Mensaje[])=>{
       this.mensajeObtenido =  mensajes;
-      console.log(this.mensajeObtenido);
+      // console.log(this.mensajeObtenido);
     });
     
   }

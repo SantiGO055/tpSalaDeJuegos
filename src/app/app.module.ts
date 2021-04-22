@@ -32,6 +32,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MensajesComponent } from './componentes/mensajes/mensajes.component';
 
 import { Error404Component } from './componentes/error404/error404.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { Error404Component } from './componentes/error404/error404.component';
     NgbModule,
     AngularFirestoreModule,
     ChatModule,
-    NavbarModule
+    NavbarModule,
+    NoopAnimationsModule
 
   ],
   providers: [AuthService, UsuariosService,AuthguardGuard],
