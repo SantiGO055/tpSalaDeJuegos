@@ -9,13 +9,7 @@ import { Observable } from 'rxjs';
 export class MemotestService {
   listaCards:CardData[];
   listaCardsASD:CardData[];
-  private paisesABuscar = [
-    'arg',
-    'co',
-    'br',
-    'cl',
-    'usa'
-  ]
+  
   constructor(private http: HttpClient) {
     this.listaCards = [];
     this.listaCardsASD = [];
@@ -25,19 +19,19 @@ export class MemotestService {
     return this.http.get<CardData>('https://restcountries.eu/rest/v2/alpha/'+ paisCode);
     
   }
-  obtenerUrl(){
-    this.paisesABuscar.forEach(pais => {
-      this.obtenerJsonPais(pais).subscribe((item)=>{
+  // obtenerUrl(){
+  //   this.paisesABuscar.forEach(pais => {
+  //     this.obtenerJsonPais(pais).subscribe((item)=>{
         
-        this.listaCards.push({...item});
+  //       this.listaCards.push({...item});
         
-      });
-    });
-    // for (let i = 0; i < this.listaCards.length; i++) {
-    //   const element = this.listaCards[i];
+  //     });
+  //   });
+  //   // for (let i = 0; i < this.listaCards.length; i++) {
+  //   //   const element = this.listaCards[i];
       
-    // }
-    return this.listaCards;
-  }
+  //   // }
+  //   return this.listaCards;
+  // }
 
 }
