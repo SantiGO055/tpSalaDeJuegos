@@ -1,4 +1,4 @@
-import { CardData } from 'src/app/clases/card-data';
+import { CardData } from 'src/app/clases/memotest/card-data';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -19,19 +19,5 @@ export class MemotestService {
     return this.http.get<CardData>('https://restcountries.eu/rest/v2/alpha/'+ paisCode);
     
   }
-  // obtenerUrl(){
-  //   this.paisesABuscar.forEach(pais => {
-  //     this.obtenerJsonPais(pais).subscribe((item)=>{
-        
-  //       this.listaCards.push({...item});
-        
-  //     });
-  //   });
-  //   // for (let i = 0; i < this.listaCards.length; i++) {
-  //   //   const element = this.listaCards[i];
-      
-  //   // }
-  //   return this.listaCards;
-  // }
 
 }

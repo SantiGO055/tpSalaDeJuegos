@@ -1,6 +1,6 @@
+import { CardData } from 'src/app/clases/memotest/card-data';
 import { MemotestService } from './../../services/juegos/memotest/memotest.service';
 import { Component, OnInit } from '@angular/core';
-import { CardData } from 'src/app/clases/card-data';
 @Component({
   selector: 'app-memotest',
   templateUrl: './memotest.component.html',

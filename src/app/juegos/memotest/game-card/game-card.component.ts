@@ -1,6 +1,6 @@
+import { CardData } from 'src/app/clases/memotest/card-data';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CardData } from 'src/app/clases/card-data';
 
 @Component({
   selector: 'app-game-card',
