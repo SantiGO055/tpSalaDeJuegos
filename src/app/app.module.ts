@@ -34,6 +34,7 @@ import { MensajesComponent } from './componentes/mensajes/mensajes.component';
 import { Error404Component } from './componentes/error404/error404.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
   declarations: [
     AppComponent,
