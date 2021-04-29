@@ -1,0 +1,11 @@
+<app-tile
+    *ngFor="let value of boardService.content; let i = index"
+    [value]="value"
+    [index]="i"
+    (click)="boardService.moveTile(i)"
+    (swipeup)="boardService.move('up')"
+    (swipedown)="boardService.move('down')"
+    (swipeleft)="boardService.move('left')"
+    (swiperight)="boardService.move('right')"
+>
+</app-tile>

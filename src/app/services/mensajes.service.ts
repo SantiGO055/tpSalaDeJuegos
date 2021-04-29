@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import {AngularFirestoreCollection, AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore'
 import { Mensaje } from '../clases/mensaje';
+import { Estadistica } from '../clases/puzzle/estadistica';
 
 // import { map } from 'jquery';
 
@@ -14,9 +15,12 @@ import { Mensaje } from '../clases/mensaje';
 })
 export class MensajesService {
   private dbpath = '/mensajes'; //nombre de la coleccion que creara para los documentos
+  private dbPathPuzzle = '/juegos-puzzle'; //nombre de la coleccion que creara para los documentos
   mensajesColecction: AngularFirestoreCollection<Mensaje>;
+  puzzleColecction: AngularFirestoreCollection<Estadistica>;
   mensajeDoc: AngularFirestoreDocument<Mensaje> | undefined;
   public mensajes: Observable<Mensaje[]>;
+  public puzzleEstadistica: Observable<Estadistica[]>;
   constructor(public db: AngularFirestore) {
     
     // this.mensajes = db.collection<Mensaje>('mensajes').valueChanges();
@@ -24,6 +28,14 @@ export class MensajesService {
     this.mensajes = this.mensajesColecction.snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{
         const data = a.payload.doc.data() as Mensaje;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    this.puzzleColecction = db.collection(this.dbPathPuzzle);
+    this.puzzleEstadistica = this.puzzleColecction.snapshotChanges().pipe(map(actions=>{
+      return actions.map(a=>{
+        const data = a.payload.doc.data() as unknown as Estadistica;
         data.id = a.payload.doc.id;
         return data;
       });
@@ -60,6 +72,12 @@ export class MensajesService {
     
     this.mensajeDoc = this.db.doc(`mensajes/${mensaje.id}`);
     this.mensajeDoc.update(mensaje);
+  }
+  addEstadisticaPuzzle(estadisticaPuzzle: Estadistica){
+
+    console.log(estadisticaPuzzle);
+    return this.puzzleColecction.add(JSON.parse( JSON.stringify(estadisticaPuzzle)));
+
   }
   // getEmail(user: User){
 

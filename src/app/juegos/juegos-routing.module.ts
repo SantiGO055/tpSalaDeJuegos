@@ -1,3 +1,4 @@
+import { PuzzleComponent } from './puzzle/puzzle/puzzle.component';
 import { MemotestComponent } from './memotest/memotest.component';
 import { Error404Component } from './../componentes/error404/error404.component';
 import { PiedraPapelTijeraComponent } from './piedra-papel-tijera/piedra-papel-tijera.component';
@@ -9,6 +10,7 @@ const routes: Routes = [
   // { path: '', component: JuegosComponent }
   { path: 'ppt', component: PiedraPapelTijeraComponent },
   { path: 'memotest', component: MemotestComponent },
+  { path: 'puzzle', component: PuzzleComponent },
   { path: '', component: Error404Component }
 ];
 

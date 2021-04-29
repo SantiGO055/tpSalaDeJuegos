@@ -8,11 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class MemotestService {
   listaCards:CardData[];
-  listaCardsASD:CardData[];
   
   constructor(private http: HttpClient) {
     this.listaCards = [];
-    this.listaCardsASD = [];
    }
   obtenerJsonPais(paisCode: string): Observable<CardData>{
     
