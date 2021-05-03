@@ -1,3 +1,4 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { NavbarModule } from './../navbar/navbar.module';
 import { ChatModule } from './../chat/chat.module';
@@ -14,8 +15,8 @@ import { TileComponent } from './puzzle/tile/tile.component';
 import { StateComponent } from './puzzle/state/state.component';
 import { BoardComponent } from './puzzle/board/board.component';
 import * as Hammer from 'hammerjs';
-import { ScoreComponent } from './tictactoe/score/score.component';
-import { SquareComponent } from './tictactoe/square/square.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 
 import {
   BrowserModule,
@@ -23,7 +24,7 @@ import {
   HammerGestureConfig,
   HAMMER_GESTURE_CONFIG,
 } from '@angular/platform-browser';
-import { BoardticComponent } from './tictactoe/boardtic/boardtic.component';
+import { TatetiComponent } from './tateti/tateti.component';
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = {
     swipe: { direction: Hammer.DIRECTION_ALL },
@@ -37,15 +38,16 @@ export class MyHammerConfig extends HammerGestureConfig {
      PuzzleComponent, 
      TileComponent, 
      StateComponent, 
-     BoardComponent, 
-     ScoreComponent, 
-     SquareComponent, BoardticComponent],
+     BoardComponent, TatetiComponent, ],
   imports: [
     CommonModule,
     JuegosRoutingModule,
     ChatModule,
     NavbarModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule,
+    MatSnackBarModule,
+    MatIconModule
   ],
   providers:[{
     provide: HAMMER_GESTURE_CONFIG,

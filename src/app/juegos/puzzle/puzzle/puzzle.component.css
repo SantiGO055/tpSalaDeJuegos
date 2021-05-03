@@ -9,3 +9,15 @@ body{
 hr {
     border: none;
   }
+.start {
+    color: green;
+    border-color: darkseagreen;
+}
+
+button {
+    border: 1px solid;
+    background: white;
+    display: inline-block;
+    padding: 1em;
+    margin-right: 2em;
+}

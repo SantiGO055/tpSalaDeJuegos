@@ -25,3 +25,12 @@
         grid-template-columns: repeat(2, 150px);
     }
 }
+.memotest{
+    margin-top: 5%;
+}
+.tiempo{
+    margin-left: 50%;
+    margin-top: 1%;
+    font-weight: 700;
+    font-size:larger;
+}

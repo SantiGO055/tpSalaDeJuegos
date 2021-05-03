@@ -41,7 +41,21 @@ export class AuthService {
     }
   }
   obtenerUsuarioLogueado(){
+   
     return this.afAuth.authState;
+  }
+  obtenerPruebaUsuario(){
+    var auxUser: User = new User();
+    this.afAuth.authState.subscribe(res=>{
+      if(res && res.uid){
+        
+        auxUser.email = res.email;
+        auxUser.uid = res.uid;
+        auxUser.username = res.displayName;
+        console.log(auxUser);
+      }
+    });
+    return auxUser;
   }
   ChequearLogueado(){
     this.afAuth.authState.subscribe(res=>{

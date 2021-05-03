@@ -19,12 +19,18 @@
         </div>
     </div>
 </div> -->
+<div class="tiempo">
+    <app-cronometro  [juegoIniciado]="juegoIniciado" (emitirSegundosTranscurridos)="obtenerSegundos($event)"></app-cronometro>
 
-<app-cronometro [tiempoMinutos]="tiempoMinutos" [juegoIniciado]="juegoIniciado" (tiempoTerminado)="detener()"></app-cronometro>
-  <div class="p-16">
-    <div class="grid p-16">
-      <app-game-card *ngFor="let c of cards; let idx=index" [data]="c" (cardClicked)="cardClicked(idx)">
-      </app-game-card>
-    </div>
-  </div>
-  <app-componente-chat></app-componente-chat>
+</div>
+<div class="memotest">
+      <div class="p-16">
+        <div class="grid p-16">
+          <app-game-card *ngFor="let c of cards; let idx=index" [data]="c" (cardClicked)="cardClicked(idx)">
+          </app-game-card>
+          
+        </div>
+      </div>
+      <!-- <app-componente-chat></app-componente-chat> -->
+</div>
+<app-componente-chat></app-componente-chat>

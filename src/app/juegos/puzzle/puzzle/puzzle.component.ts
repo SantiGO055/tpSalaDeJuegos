@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { BoardService } from '../board/board.service';
 import { keyToDirection } from '../defs';
@@ -12,12 +13,17 @@ export class PuzzleComponent implements OnInit {
 
   constructor(
     public boardService: BoardService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.boardService.initGame();
   }
 
+  guardarYSalir(){
+    this.boardService.subirEstadistica();
+    this.router.navigateByUrl('/');
+  }
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (this.boardService.isInProgress()) {

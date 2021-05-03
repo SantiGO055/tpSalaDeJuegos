@@ -23,7 +23,7 @@ export class WeatherComponent implements OnInit {
 
     this.serviceApi.pruebaApi(this.ciudad).subscribe(data=>{
       
-      console.log(data);
+      // console.log(data);
       this.icono = data.current.condition.icon;
       this.descripcion = data.current.condition.text;
     });

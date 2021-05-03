@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <form [formGroup]="formGroup" class="needs-validation" novalidate (ngSubmit)="enviarEncuesta()">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre">Nombre</label>
+                        <input name="nombre" type="text" class="form-control" id="nombre" formControlName="nombre">
+                        <small class="invalid" *ngIf="formGroup.get('nombre')?.errors?.required && formGroup.get('nombre')?.touched">Nombre requerido</small>
+                        
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="apellido">Apellido</label>
+                        <input name="apellidoActor" type="text" class="form-control" id="apellidoActor" formControlName="apellido">
+                        <small class="invalid" *ngIf="formGroup.get('apellido')?.errors?.required && formGroup.get('apellido')?.touched">Apellido requerido</small>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="edad">Edad</label>
+                        <input name="edadEncuesta" type="number" class="form-control" id="edadEncuesta" formControlName="edad">
+                        <small class="invalid" *ngIf="formGroup.get('edad')?.errors?.required && formGroup.get('edad')?.touched">Edad requerida</small>
+                        <small class="invalid" *ngIf="formGroup.get('edad')?.errors?.min || formGroup.get('edad')?.errors?.max && formGroup.get('edad')?.touched">Edad entre 18 y 99 años</small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="telefono">Telefono</label>
+                        <input name="telefono" type="number" class="form-control" id="telefono" formControlName="telefono">
+                        <small class="invalid" *ngIf="formGroup.get('telefono')?.errors?.required && formGroup.get('telefono')?.touched">Telefono de actor requerido</small>
+                        <small class="invalid" *ngIf="formGroup.get('telefono')?.errors?.min || formGroup.get('telefono')?.errors?.max && formGroup.get('telefono')?.touched">Telefono incorrecto</small>
+                    </div>
+                    
+                </div>
+
+                <!-- <h4 class="mb-3">Nacionalidad</h4> -->
+                <div class="row">
+                <!-- <div class="col-md-6 mb-3">
+                    <label for="nacionalidad">Nombre del pais</label>
+                    <input name="nacionalidad" for="nacionalidad" formControlName="nacionalidad" class="form-control">
+                    <small class="invalid"  *ngIf="formGroup.get('nacionalidad')?.errors?.nacionalidad">Pais no seleccionado</small>
+                    <label></label>
+                    <small class="invalid"  *ngIf="formGroup.get('nacionalidad')?.errors?.nombrePais">Pais no seleccionado</small>
+                    <input name="nombrePais" type="text" class="form-control" id="nombrePais" formControlName="nombrePais" readonly>
+                    
+                </div> -->
+                </div>
+                <hr class="mb-4">
+                <h5 class="mb-3">¿Que juego te gusto mas?</h5>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ppt" name="ppt" formControlName="ppt">
+                    <label class="custom-control-label" for="ppt">Piedra papel o tijera</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="memotest" formControlName="memotest">
+                    <label class="custom-control-label" for="memotest">Memotest</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="tateti" formControlName="tateti">
+                    <label class="custom-control-label" for="tateti">Ta te ti</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="rompecabezas" formControlName="rompecabezas">
+                    <label class="custom-control-label" for="rompecabezas">Rompe cabezas</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ninguno" formControlName="ninguno">
+                    <label class="custom-control-label" for="ninguno">Ninguno</label>
+                </div>
+                <hr class="mb-4">
+                <h5 class="mb-3">¿Recomendarias esta pagina a algun amigo?</h5>
+                <div class="d-block my-3">
+                    <div class="custom-control custom-radio">
+                    <input id="radioSi"  type="radio" class="custom-control-input" formControlName="recomienda" value="Si" checked required >
+                    <label class="custom-control-label" for="radioSi">Si</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                    <input id="radioNo" type="radio" class="custom-control-input" formControlName="recomienda"  required value="No">
+                    <label class="custom-control-label" for="radioNo">No</label>
+                    </div>
+                    
+                </div>
+                <hr class="mb-4">
+                <h6 class="mb-3">Indique que cambios realizaria a la pagina/juegos</h6> <small>(Opcional)</small>
+                <textarea id="tateti" formControlName="cambios"id="cambios" name="cambios" rows="4" cols="50"></textarea>
+                
+                
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="formGroup.invalid">Enviar encuesta</button>
+            </form>
+    
+        </div>
+
+    </div>
+</div>

@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     const user = await this.authSvc.register(this.user,this.password);
     if(user.message == null){
       // this.alertaLogueo('Se creo el usuario con email: ' + this.user.email + ' correctamente', 'Registro exitoso');
-      console.log("Successfully created user!");
+      // console.log("Successfully created user!");
       this.user.uid = user.user.uid;
       this.user.fecha = this.user.obtenerFechaHora();
       // this.authSvc.SignIn(this.user,this.password);
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigateByUrl('/home');
     }
     else{
-      console.log(user.code);
+      // console.log(user.code);
       if(user.code == 'auth/invalid-email'){
         window.alert("Ingrese un email valido por favor");
       }

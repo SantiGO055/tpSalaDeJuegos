@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoardticComponent } from './boardtic.component';
+import { TatetiComponent } from './tateti.component';
 
-describe('BoardticComponent', () => {
-  let component: BoardticComponent;
-  let fixture: ComponentFixture<BoardticComponent>;
+describe('TatetiComponent', () => {
+  let component: TatetiComponent;
+  let fixture: ComponentFixture<TatetiComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoardticComponent ]
+      declarations: [ TatetiComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BoardticComponent);
+    fixture = TestBed.createComponent(TatetiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

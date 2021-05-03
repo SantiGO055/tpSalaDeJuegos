@@ -76,7 +76,7 @@ export class MensajesComponent implements OnInit {
       this.mensajeService.add(this.mensajeObj);
     }
     else{
-      console.log("usuario deslogueado");
+      // console.log("usuario deslogueado");
     }
   }
   
@@ -93,12 +93,12 @@ export class MensajesComponent implements OnInit {
   }
   
   deleteMensaje(event:any,mensaje:Mensaje){
-    console.log(event);
+    // console.log(event);
     this.mensajeService.deleteMensaje(mensaje);
   }
   editarMensaje(){
     //llamo al servicio mensaje para editar en la bd
-    console.log(this.mensajeObj);
+    // console.log(this.mensajeObj);
     
     this.mensajeObj.mensaje = this.editMensaje;
     this.mensajeService.updateMensaje(this.mensajeObj)

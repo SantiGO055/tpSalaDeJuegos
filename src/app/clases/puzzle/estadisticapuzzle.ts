@@ -1,7 +1,10 @@
 import { User } from './../user';
-export class Estadistica {
+export class Estadisticapuzzle {
+
     usuario: User;
     movimientos:number;
     tiempoSegundos:number;
     id?:string;
+    fecha?:string;
+
 }

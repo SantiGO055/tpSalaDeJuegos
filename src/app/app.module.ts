@@ -3,7 +3,7 @@ import { ChatModule } from './chat/chat.module';
 import { ComponenteChatComponent } from './chat/componente-chat/componente-chat.component';
 import { AuthguardGuard } from './guard/authguard.guard';
 import { WeatherComponent } from './componentes/weather/weather.component';
-import { LoginComponent } from './componentes/login/login.component';
+
 // import { NavbarComponent } from './componentes/navbar/navbar.component';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -33,20 +33,21 @@ import { MensajesComponent } from './componentes/mensajes/mensajes.component';
 
 import { Error404Component } from './componentes/error404/error404.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     // NavbarComponent,
     WeatherComponent,
-    LoginComponent,
     RegisterComponent,
     HomeComponent,
     LoggedComponent,
     QuiensoyComponent,
     MensajesComponent,
     Error404Component,
+    EncuestaComponent,
     
   ],
   imports: [
@@ -64,7 +65,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AngularFirestoreModule,
     ChatModule,
     NavbarModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    SweetAlert2Module.forRoot()
 
   ],
   providers: [AuthService, UsuariosService,AuthguardGuard],

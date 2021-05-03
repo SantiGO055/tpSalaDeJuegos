@@ -1,18 +1,20 @@
+import { FormGuard } from './guard/form.guard';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { Error404Component } from './componentes/error404/error404.component';
 import { RegisterComponent } from './componentes/register/register.component';
 import { QuiensoyComponent } from './componentes/quiensoy/quiensoy.component';
 import { AuthguardGuard } from './guard/authguard.guard';
 import { HomeComponent } from './componentes/home/home.component';
 
-import { LoginComponent } from './componentes/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 const routes: Routes = [
   
   {path: '', component: HomeComponent, canActivate: [AuthguardGuard]},
-  { path: 'login', component: LoginComponent},
+  
   { path: 'register', component: RegisterComponent},
+  { path: 'encuesta', component: EncuestaComponent,},
   { path: 'home',  component: HomeComponent,canActivate: [AuthguardGuard]},
   { path: 'quienSoy', component: QuiensoyComponent},
   

@@ -39,10 +39,11 @@ export class LoginComponent implements OnInit {
     this.user.email = this.email;
     try {
       const user = await this.authSvc.SignIn(this.user,this.password);
-      console.log(user);
+      // console.log(user);
       if (user.message == null ) {
-        console.log("se logueo");
+        // console.log("se logueo");
         localStorage.setItem('emailLogueadoLocalStorage', this.user.email);
+        // localStorage.setItem('usuarioLogueado', JSON.stringify(this.user));
         this.router.navigateByUrl('/');
       }
       else{
@@ -58,12 +59,12 @@ export class LoginComponent implements OnInit {
         if(user.code == 'auth/user-not-found'){
           window.alert("Usuario inexistente");
         }
-        console.log(user.message);
+        // console.log(user.message);
       }
       
     } catch (error) {
       
-      console.log(error);
+      // console.log(error);
     }
   }
   completarCamposTest1(){

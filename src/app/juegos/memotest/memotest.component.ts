@@ -1,6 +1,12 @@
+import { Router } from '@angular/router';
+import { Estadisticamemotest } from './../../clases/memotest/estadisticamemotest';
+import { MensajesService } from './../../services/mensajes.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { CardData } from 'src/app/clases/memotest/card-data';
 import { MemotestService } from './../../services/juegos/memotest/memotest.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import Swal from'sweetalert2';
+import { User } from 'src/app/clases/user';
 @Component({
   selector: 'app-memotest',
   templateUrl: './memotest.component.html',
@@ -13,7 +19,10 @@ export class MemotestComponent implements OnInit {
   cardImagesUrl:string[];
   cardImagesUrlAux:string[];
   juegoIniciado: boolean;
+  estadistica: Estadisticamemotest;
+  @Output() terminoElJuego = new EventEmitter();
   tiempoMinutos:number;
+  segundosTranscurridosAux:number;
   private paisesABuscar = [
     'arg',
     'co',
@@ -22,66 +31,91 @@ export class MemotestComponent implements OnInit {
     'usa'
   ]
   constructor(
-    private memoSvc: MemotestService
+    private memoSvc: MemotestService,
+    private authSvc: AuthService,
+    private fireSvc: MensajesService,
+    private router: Router
+
   ) {
     this.cardImagesUrl = []
     this.cardImagesUrlAux = []
     this.data = [];
     this.tiempoMinutos = 2;
    }
+   swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  })
+  presentToast(){
+    this.swalWithBootstrapButtons.fire({
+      title: 'Has finalizado',
+      text: "Desea guardar o reiniciar el juego?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Salir y guardar',
+      cancelButtonText: 'Reiniciar juego',
+      reverseButtons: true
+    }).then((result) => {
 
-  // ngOnInit(): void {
-  //   this.setupCards();
-  // }
-  
-  // setupCards(): void {
-  //     this.cardImages = [];
-  //     this.paisesABuscar.forEach(element => {
-  //       this.memoSvc.obtenerJsonPais(element).subscribe((item)=>{
-  //         this.cardImagesUrl.push(item.url);
-  //         this.shuffleArray(this.cardImagesUrl);
-  //         this.cardImagesUrlAux.push(item.url);
-          
-  //         this.shuffleArray(this.cardImagesUrlAux);
-          
-  //       });
-  //     });
-  //     this.cardImages.forEach((image) => {
-  //       const cardData: CardData = {
-  //         url: image.url,
-  //         state: 'default'
-  //       };
-  
-  //       this.cards.push({ ...cardData });
-  //       this.cards.push({ ...cardData });
-  //     });
-  //     //cardImages contendra la url obtenida de la api
-  //     // this.cardImages = this.cardImages.slice();
-  //     // console.log(this.shuffleArray(this.cardImagesUrl));
-  //     // this.cards=this.shuffleArray(this.cards);
-  //     console.log(this.cards);
-  //     console.log(this.cardImagesUrlAux);
-  //     console.log(this.cardImagesUrl);
-  //       // this.cardImages.push(this.cardImages[0]);
-  // }
-  // shuffleArray(array: string[]): string[] {
-    
-  //     for (let i = array.length - 1; i > 0; i--) {
-  //       let indiceAleatorio = Math.floor(Math.random() * (i + 1));
-  //       let temporal = array[i];
-  //       array[i] = array[indiceAleatorio];
-  //       array[indiceAleatorio] = temporal;
-  //     }
-    
-  //   // let newArray = array.sort(()=> Math.random() - 0.5);
-  //   // console.log(newArray);
-  //   return array;
-  //   // return anArray.sort(function() { return Math.random() - 0.5 });
-  //   // return anArray.map(a => [Math.random(), a])
-  //   //   .sort((a, b) => a[0] - b[0])
-  //   //   .map(a => a[1]);
-  // }
-  
+      if (result.isConfirmed) {
+
+        this.saveGame();
+        this.swalWithBootstrapButtons.fire(
+          'Guardado completo',
+          'Se guardaron las estadisticas correctamente.',
+          'success'
+        );
+        this.router.navigateByUrl('/');
+
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        //recargar pagina
+        window.location.reload();
+        // this.swalWithBootstrapButtons.fire(
+        //   'Cancelled',
+        //   'Your imaginary file is safe :)',
+        //   'error'
+        // )
+      }
+    })
+  }
+
+  saveGame(){
+    this.authSvc.obtenerUsuarioLogueado().subscribe(user=>{
+      
+      // <string>user?.displayName;
+      // jugador1.usuario = JSON.parse( localStorage.getItem('usuarioLogueado'));
+      
+      // jugador1.usuario = JSON.parse(JSON.stringify(usuarioAux));
+      // jugador1.usuario.email = usuarioAux.email.slice();
+      // jugador1.usuario.uid = usuarioAux.uid.slice();
+      // jugador1.usuario.username = usuarioAux.username.slice();
+      // jugador1.usuario.uid = usuarioAux.uid;
+      // jugador1.usuario.username = usuarioAux.username;
+      // jugador1.usuario =localStorage.getItem()
+      this.estadistica = new Estadisticamemotest();
+      this.estadistica.usuario = new User();
+      
+      this.estadistica.usuario.email = user.email;
+      this.estadistica.usuario.uid = user.uid;
+      this.estadistica.usuario.username = user.displayName;
+      this.estadistica.fecha = this.estadistica.usuario.obtenerFechaHora();
+      this.estadistica.tiempoSegundos = this.segundosTranscurridosAux;
+      // console.log(this.estadistica);
+      
+      this.fireSvc.addMemo(this.estadistica);
+    });
+  }
+  obtenerSegundos(segundosTranscurridos: number){
+    // console.log(segundosTranscurridos);
+    this.segundosTranscurridosAux = segundosTranscurridos;
+  }
+
   cardImages = [
     'pDGNBK9A0sk',
     'fYDrhbVlV1E',
@@ -118,7 +152,7 @@ export class MemotestComponent implements OnInit {
       this.cards.push({ ...cardData });
 
     });
-    console.log(this.cards);
+    // console.log(this.cards);
     this.cards = this.shuffleArray(this.cards);
   }
 
@@ -153,6 +187,8 @@ export class MemotestComponent implements OnInit {
         this.matchedCount++;
 
         if (this.matchedCount === this.cardImages.length) {
+          
+          this.detener();
           // const dialogRef = this.dialog.open(RestartDialogComponent, {
           //   disableClose: true
           // });
@@ -171,6 +207,8 @@ export class MemotestComponent implements OnInit {
     this.setupCards();
   }
   detener() {
+
+    this.presentToast();
     this.juegoIniciado = false;
     
   }

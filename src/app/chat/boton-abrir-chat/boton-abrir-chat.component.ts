@@ -17,7 +17,7 @@ export class BotonAbrirChatComponent implements OnInit {
   }
 
   mostrarChat(){
-    console.log(this.muestroChat);
+    // console.log(this.muestroChat);
     this.muestroChat = !this.muestroChat;
     this.mostrarChatFunc.emit(this.muestroChat)
   }

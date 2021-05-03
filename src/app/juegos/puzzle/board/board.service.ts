@@ -1,7 +1,8 @@
+import { Estadisticapuzzle } from './../../../clases/puzzle/estadisticapuzzle';
 import { User } from './../../../clases/user';
 import { AuthService } from './../../../services/auth.service';
 import { MensajesService } from './../../../services/mensajes.service';
-import { Estadistica } from './../../../clases/puzzle/estadistica';
+
 import { Injectable } from '@angular/core';
 import { Observable, Subscription, timer } from 'rxjs';
 import {
@@ -22,6 +23,7 @@ export class BoardService {
   private initialContent: any[] = [];
   finished = false;
   user:User;
+  estadisticaPuzzle: Estadisticapuzzle;
   elapsedSeconds = 0;
 
   private timerSrc: Observable<number> = null;
@@ -34,7 +36,7 @@ export class BoardService {
     private estadisticaPuzzleSvc: MensajesService,
     private authSvc: AuthService
   ) {
-    this.user = new User();
+    // this.user = new User();
     this.completed = [];
     for (let i = 1; i <= 15; i++) {
       this.completed.push(i);
@@ -42,13 +44,13 @@ export class BoardService {
     this.completed.push(null);
   }
   ngOnInit(){
-    this.authSvc.obtenerUsuarioLogueado().subscribe(user=>{
-      this.user.email= <string>user?.email;
-      this.user.uid= <string>user?.uid;
-      this.user.username = localStorage.getItem('emailLogueadoLocalStorage');
+    // this.authSvc.obtenerUsuarioLogueado().subscribe(user=>{
+    //   this.user.email= <string>user?.email;
+    //   this.user.uid= <string>user?.uid;
+    //   this.user.username = localStorage.getItem('emailLogueadoLocalStorage');
       
-      // <string>user?.displayName;
-    });
+    //   // <string>user?.displayName;
+    // });
   }
 
   initGame() {
@@ -109,14 +111,32 @@ export class BoardService {
     this.content[nullIndex] = sourceValue;
   }
 
-  isCompleted() {
+  subirEstadistica(){
+    this.authSvc.obtenerUsuarioLogueado().subscribe(user=>{
+      this.user = new User();
+      this.user.email = user.email;
+      this.user.uid = user.uid;
+      this.user.username = user.displayName;
+
+
+      this.estadisticaPuzzle = new Estadisticapuzzle();
+      this.estadisticaPuzzle.usuario = this.user;
+      this.estadisticaPuzzle.fecha = this.user.obtenerFechaHora();
+      this.estadisticaPuzzle.movimientos = this.movesCount;
+      this.estadisticaPuzzle.tiempoSegundos = this.elapsedSeconds;
+      console.log(this.estadisticaPuzzle);
+      // this.jugador1.usuario.email= <string>user?.email;
+      // this.jugador1.usuario.uid= <string>user?.uid;
+      // this.jugador1.usuario.username = localStorage.getItem('emailLogueadoLocalStorage');
+
+      this.estadisticaPuzzleSvc.addEstadisticaPuzzle(this.estadisticaPuzzle); //TODO terminar esto
+    });
+  }
+  isCompleted(abandono: boolean) {
+    //JSON.stringify(this.content) === JSON.stringify(this.completed) poner esto dentro dle if
     if(JSON.stringify(this.content) === JSON.stringify(this.completed)){
-      let estadisticaPuzzle:Estadistica = {
-        usuario: this.user,
-        tiempoSegundos: this.elapsedSeconds,
-        movimientos: this.movesCount
-      }
-      this.estadisticaPuzzleSvc.addEstadisticaPuzzle(estadisticaPuzzle); //TODO terminar esto
+      
+      this.subirEstadistica();
       return true;
     }
     else{
@@ -147,8 +167,8 @@ export class BoardService {
     if (successful) {
       this.movesStack.push(direction);
       this.movesCount++;
-      this.finished = true;
-      this.isCompleted();
+      this.finished =  this.isCompleted(false); //cambie esto, poner this.isCompleted();
+     
     }
   }
 

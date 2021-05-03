@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="container">
+
+    <div class="row">
+    
+        <div class="col-md-8">
+            <div class="game-area">
+                <mat-grid-list  cols="3">
+                    <mat-grid-tile class="tick-tack-grid" *ngFor="let block of gs.blocks; let i = index;" (click)="playerClick(i)"><i [class]="block.symbol == 'done' ? 'material-icons tick' : 'material-icons cross'">{{ block.symbol }}</i></mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+            <h2>Puntaje:</h2>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Vos:</td>
+                        <td>{{ gs.players[0].score }}</td>
+                    </tr>
+    
+                    <tr>
+                        <td>Computadora:</td>
+                        <td>{{ gs.players[1].score }}</td>
+                    </tr>
+    
+                    <tr>
+                        <td>Empate:</td>
+                        <td>{{ gs.draw }}</td>
+                    </tr>
+    
+                </tbody>
+            </table>
+            <div class="botones">
+                <a class="pull-right text-right" class="btn btn-danger button" (click)="resetGame($event)" href="#">Resetear Juego</a>
+                <a class="pull-right text-right" class="btn btn-danger button" (click)="newGame()" >Juego nuevo</a>
+
+            </div>
+            <div class="guardarYSalir">
+                <a class="pull-right text-right" class="btn btn-success button" (click)="saveGame()">Guardar</a>
+                <a class="pull-right text-right" class="btn btn-warning button" [routerLink]="'/home'">Salir</a>
+            </div>
+        </div>
+    
+    </div>
+        
+    
+    </div>
+    <app-componente-chat></app-componente-chat>

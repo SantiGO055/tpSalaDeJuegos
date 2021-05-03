@@ -27,7 +27,7 @@ export class UsuariosService {
   obtenerUsuarioPorEmail(email:string){
     return this.usuariosRef.ref.get().then((doc)=>{
       if(!doc.empty){
-        console.log(doc.docs[0].data());
+        // console.log(doc.docs[0].data());
       }
     });
   }

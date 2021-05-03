@@ -56,11 +56,17 @@ export class ComponenteChatComponent implements OnInit {
     this.mostrarChat = event;
   }
   scrollToBottom(): void {
-    this.divMensaje.nativeElement.scrollTop
-    = this.divMensaje.nativeElement.scrollHeight;
+    
+    if(this.divMensaje.nativeElement != undefined){
+
+      this.divMensaje.nativeElement.scrollTop
+      = this.divMensaje.nativeElement.scrollHeight;
+
+    }
   }
   ngAfterViewChecked() {
     // console.log("afterviewchecked");
+    // console.log(this.divMensaje.nativeElement.value);
     this.scrollToBottom();
   }
   // ngAfterViewInit() {

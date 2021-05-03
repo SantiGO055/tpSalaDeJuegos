@@ -29,7 +29,7 @@ export class GameppService {
     
     const compChoice = this.getComputerChoice();
     const playUserComp = userChoice + compChoice;
-    console.log(`Jugada realizada: ${playUserComp}`);
+    // console.log(`Jugada realizada: ${playUserComp}`);
     
     switch (playUserComp) {
       // Ganamos
