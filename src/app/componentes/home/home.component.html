@@ -1,7 +1,54 @@
 <app-navbar></app-navbar>
 <!-- <app-weather></app-weather> -->
-<div class="container-fluid">
+<div class="container">
   
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <div class="card">
+        
+        <div class="card-body">
+          <h5 class="card-title">Piedra Papel o Tijera</h5>
+          <p class="card-text">Jugá al clásico piedra papel o tijera contra la computadora, podras ganarle?</p>
+          <a [routerLink]="'juegos/ppt'" class="btn btn-primary">Jugar</a>
+          <img src="/assets/rock-paper-scissors.svg" class="card-img-top" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Memotest</h5>
+          <p class="card-text">Juego para entrenar la memoria seleccionando cartas iguales</p>
+          <br>
+          <a [routerLink]="'juegos/memotest'" class="btn btn-primary">Jugar</a>
+          <img src="/assets/cards.svg" class="card-img-top" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Ta te ti</h5>
+          <p class="card-text">Jugá al ta te ti contra la computadora.</p>
+          <br>
+          <a [routerLink]="'juegos/memotest'" class="btn btn-primary">Jugar</a>
+          <img src="/assets/tic-tac-toe.svg" class="card-img-top" alt="...">
+
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Rompe cabezas deslizante</h5>
+          <p class="card-text">Jugá al rompe cabezas deslizante de numeros, ordena los numeros con el menor movimiento y tiempo posible.</p>
+          <a [routerLink]="'juegos/memotest'" class="btn btn-primary">Jugar</a>
+          <img src="/assets/jigsaw.svg" class="card-img-top" alt="...">
+       
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="containerChat">
   <app-componente-chat></app-componente-chat>
