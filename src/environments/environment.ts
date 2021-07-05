@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  production: "false",
   apiKey: "AIzaSyD8JloN3a4T1lUUDZxEbaYTD3wp45E40jE",
     authDomain: "saladejuegos-7da4f.firebaseapp.com",
     databaseURL: "https://saladejuegos-7da4f-default-rtdb.firebaseio.com",
